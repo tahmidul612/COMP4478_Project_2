@@ -6,13 +6,13 @@ using UnityEngine.Tilemaps;
 
 public class collectCoin : MonoBehaviour
 {
-    public Vector3 size;
-    private SpriteRenderer renderer;
+    private Vector3 size;
+    private SpriteRenderer player_renderer;
     // Start is called before the first frame update
     void Start()
     {
-        renderer = GameObject.Find("Player").GetComponent<SpriteRenderer>();
-        size = renderer.bounds.size;
+        player_renderer = GameObject.Find("Player").GetComponent<SpriteRenderer>();
+        size = player_renderer.bounds.size;
     }
 
     // Update is called once per frame
@@ -25,25 +25,14 @@ public class collectCoin : MonoBehaviour
     {
         //Detecting the Grid Position of Player
         if (collision.gameObject.name == "Player")
-        {        
-            //GridLayout gridLayout = transform.parent.GetComponentInParent<GridLayout>();
+        {
+            Debug.Log("Player collided with coin");
             Tilemap tilemap = GetComponent<Tilemap>();
-            //Vector3 hitPosition = Vector3.zero;
-            //ContactPoint2D hit = collision.GetContact(0);
-            //Vector2 tileNorm = hit.normal;
-
-            Vector3 hitPosition = Vector3.zero;
             foreach (ContactPoint2D hit in collision.contacts)
             {
-                hitPosition.x = (hit.point.x) * (hit.normal.x >= 0 ? 1 : -1);
-                hitPosition.y = (hit.point.y) * (hit.normal.y >= 0 ? 1 : -1);
-                Debug.Log("HitPoint: " + hit.point + ", HitPosition: " + hitPosition + ", WorldToCell: " + tilemap.WorldToCell(hitPosition) + ", TileNorm: " + hit.normal);
-                tilemap.SetTile(tilemap.WorldToCell(hitPosition), null);
+                tilemap.SetTile(tilemap.WorldToCell(hit.point), null);
+                Debug.Log("HitPoint: " + hit.point + "WorldToCell: " + tilemap.WorldToCell(hit.point));
             }
-
-            //Debug.Log("HitPoint: " + hit.point + "HitPosition: " + hitPosition + "WorldToCell: " + world + "TileNorm: " + tileNorm);
-            //tilemap.SetTile(world, null);
-            //}
         }
  
     }

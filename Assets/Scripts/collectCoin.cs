@@ -35,10 +35,10 @@ public class collectCoin : MonoBehaviour
             Vector3 hitPosition = Vector3.zero;
             foreach (ContactPoint2D hit in collision.contacts)
             {
-                hitPosition.x = (hit.point.x - 0.01f) * hit.normal.x;
-                hitPosition.y = (hit.point.y - 0.01f) * hit.normal.y;
+                hitPosition.x = (hit.point.x) * (hit.normal.x >= 0 ? 1 : -1);
+                hitPosition.y = (hit.point.y) * (hit.normal.y >= 0 ? 1 : -1);
+                Debug.Log("HitPoint: " + hit.point + ", HitPosition: " + hitPosition + ", WorldToCell: " + tilemap.WorldToCell(hitPosition) + ", TileNorm: " + hit.normal);
                 tilemap.SetTile(tilemap.WorldToCell(hitPosition), null);
-                Debug.Log(tilemap.WorldToCell(hitPosition));
             }
 
             //Debug.Log("HitPoint: " + hit.point + "HitPosition: " + hitPosition + "WorldToCell: " + world + "TileNorm: " + tileNorm);

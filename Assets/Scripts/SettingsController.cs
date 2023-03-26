@@ -26,7 +26,6 @@ public class SettingsController : MonoBehaviour
                 currentResolutionIndex = i;
             }
         }
-
         resolutionDropdown.AddOptions(options);
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();

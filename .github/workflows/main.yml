@@ -22,7 +22,7 @@ on:
   workflow_dispatch:
     inputs:
       workflow_mode:
-        description: '[release] [Android, iOS, StandaloneLinux64, WebGL, StandaloneWindows64, WSAPlayer, StandaloneOSX, Steam]'
+        description: '[release] [WebGL]'
         required: false
         default: ''
 
@@ -69,7 +69,6 @@ jobs:
         env:
           RELEASE_NOTES: ${{ github.event.release.body }}
         run: |
-          echo "$RELEASE_NOTES" > fastlane/metadata/android/en-US/changelogs/default.txt
           echo "$RELEASE_NOTES" > fastlane/metadata/en-US/release_notes.txt
       - name: Auto-Commit Release Notes
         if: github.event.action == 'published'

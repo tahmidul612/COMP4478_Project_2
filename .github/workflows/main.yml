@@ -64,19 +64,6 @@ jobs:
         with:
           testMode: playmode
           githubToken: ${{ secrets.GITHUB_TOKEN }}
-      - name: Update Release Notes
-        if: github.event.action == 'published'
-        env:
-          RELEASE_NOTES: ${{ github.event.release.body }}
-        run: |
-          echo "$RELEASE_NOTES" > fastlane/metadata/en-US/release_notes.txt
-      - name: Auto-Commit Release Notes
-        if: github.event.action == 'published'
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          branch: main
-          file_pattern: fastlane/metadata
-          commit_message: Update Release Notes (MINOR)
 
   lint:
     name: Quality Check

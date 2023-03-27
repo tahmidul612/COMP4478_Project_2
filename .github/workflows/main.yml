@@ -82,7 +82,7 @@ jobs:
   lint:
     name: Quality Check
     runs-on: ubuntu-latest
-    container: unityci/editor:ubuntu-2021.3.16f1-linux-il2cpp-1
+    container: unityci/editor:ubuntu-2021.3.21f1-linux-il2cpp-1
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v1
@@ -102,9 +102,9 @@ jobs:
         run: echo "$UNITY_LICENSE" > UnityLicense.ulf && unity-editor -nographics -logFile /dev/stdout -quit -username "$UNITY_EMAIL" -password "$UNITY_PASSWORD" -manualLicenseFile UnityLicense.ulf
       - name: Generate Solution
         run: unity-editor -nographics -logFile /dev/stdout -customBuildName Card-Game-Simulator -projectPath . -executeMethod Packages.Rider.Editor.RiderScriptEditor.SyncSolution -quit
-      - name: Return License
-        if: always()
-        run: unity-editor -logFile /dev/stdout -quit -returnlicense
+      # - name: Return License
+      #   if: always()
+      #   run: unity-editor -logFile /dev/stdout -quit -returnlicense
       - name: SonarQube Analysis
         env:
           FrameworkPathOverride: /opt/unity/Editor/Data/MonoBleedingEdge/

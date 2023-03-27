@@ -152,22 +152,26 @@ jobs:
       - name: Archive artifact
         env:
           INPUT_PATH: ${{ format('{0}/build/WebGL', github.workspace) }}
+          TEMP_DIR: ${{ format('{0}/docs', github.workspace) }}
         run: |
+          mkdir -p "$TEMP_DIR"
           chmod -c -R +rX "$INPUT_PATH" | while read line; do
             echo "::warning title=Invalid file permissions automatically fixed::$line"
           done
           tar \
             --dereference --hard-dereference \
             --directory "$INPUT_PATH" \
-            -cvf "$RUNNER_TEMP/artifact.tar" \
+            -cvf "$TEMP_DIR/artifact.tar" \
             --exclude=.git \
             --exclude=.github \
             .
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3
+        env:
+          TEMP_DIR: ${{ format('{0}/docs', github.workspace) }}
         with:
           name: webgl-gh-pages
-          path: $RUNNER_TEMP/artifact.tar
+          path: $TEMP_DIR/artifact.tar
           retention-days: 1
           if-no-files-found: error

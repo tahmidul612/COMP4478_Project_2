@@ -7,6 +7,9 @@
 |            Austin Hart | Tahmidul Islam |
 
 ---
+## Play in Browser
+
+https://tahmidul612.github.io/COMP4478_Project_2/
 
 ## Development Tools
 The master branch is now protected from commits. Please do your work in a separate branch and merge with pull request when done.

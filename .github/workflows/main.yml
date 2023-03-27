@@ -131,47 +131,20 @@ jobs:
         with:
           fetch-depth: 0
           lfs: true
+          token: ${{ secrets.PAT }}
       - name: Download WebGL Artifact
         uses: actions/download-artifact@v3
         with:
           name: WebGL
           path: build/WebGL
-      # - name: Copy the WebGL build artifacts to the GitHub Pages directory
-      #   env:
-      #     WEBGL_BUILD_PATH: ${{ format('{0}/build/WebGL', github.workspace) }}
-      #     WEBGL_PAGES_PATH: ${{ format('{0}/docs', github.workspace) }}
-      #   run: cp -r $WEBGL_BUILD_PATH/* $WEBGL_PAGES_PATH
-      # - name: Deploy to GitHub Pages
-      #   uses: stefanzweifel/git-auto-commit-action@v4
-      #   with:
-      #     branch: webgl
-      #     create_branch: true
-      #     file_pattern: docs/**
-      #     commit_message: Deploy to GitHub Pages
-
-      - name: Archive artifact
+      - name: Copy the WebGL build artifacts to the GitHub Pages directory
         env:
-          INPUT_PATH: ${{ format('{0}/build/WebGL', github.workspace) }}
-          TEMP_DIR: ${{ format('{0}/docs', github.workspace) }}
-        run: |
-          mkdir -p "$TEMP_DIR"
-          chmod -c -R +rX "$INPUT_PATH" | while read line; do
-            echo "::warning title=Invalid file permissions automatically fixed::$line"
-          done
-          tar \
-            --dereference --hard-dereference \
-            --directory "$INPUT_PATH" \
-            -cvf "$TEMP_DIR/artifact.tar" \
-            --exclude=.git \
-            --exclude=.github \
-            .
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v3
-        env:
-          TEMP_DIR: ${{ format('{0}/docs', github.workspace) }}
+          WEBGL_BUILD_PATH: ${{ format('{0}/build/WebGL', github.workspace) }}
+          WEBGL_PAGES_PATH: ${{ format('{0}/docs', github.workspace) }}
+        run: cp -r $WEBGL_BUILD_PATH/* $WEBGL_PAGES_PATH
+      - name: Deploy to GitHub Pages
+        uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          name: webgl-gh-pages
-          path: $TEMP_DIR/artifact.tar
-          retention-days: 1
-          if-no-files-found: error
+          branch: main
+          file_pattern: docs/**
+          commit_message: Deploy to GitHub Pages

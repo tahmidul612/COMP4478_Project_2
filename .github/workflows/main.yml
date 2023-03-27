@@ -98,19 +98,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - name: Create LFS file list
-        run: git lfs ls-files -l | cut -d' ' -f1 | sort > .lfs-assets-id
-      - name: Restore LFS cache
-        uses: actions/cache@v3
-        id: lfs-cache
-        with:
-          path: .git/lfs
-          key: ${{ runner.os }}-lfs-${{ hashFiles('.lfs-assets-id') }}
-      - name: Git LFS Pull
-        run: |
-          git lfs pull
-          git add .
-          git reset --hard
+          lfs: true
       - uses: actions/cache@v3
         with:
           path: Library
@@ -122,8 +110,6 @@ jobs:
         id: build
         uses: game-ci/unity-builder@v2
         env:
-          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
           targetPlatform: ${{ matrix.targetPlatform }}
@@ -133,20 +119,6 @@ jobs:
         with:
           name: ${{ matrix.targetPlatform }}
           path: build/${{ matrix.targetPlatform }}
-      - name: Zip Build
-        uses: montudor/action-zip@v1
-        if: github.event.action == 'published' && matrix.targetPlatform == 'StandaloneLinux64'
-        with:
-          args: zip -qq -r build/${{ matrix.targetPlatform }}.zip build/${{ matrix.targetPlatform }}
-      - name: Upload Zip to GitHub Release
-        uses: svenstaro/upload-release-action@v2
-        if: github.event.action == 'published' && matrix.targetPlatform == 'StandaloneLinux64'
-        with:
-          asset_name: ${{ matrix.targetPlatform }}.zip
-          file: build/${{ matrix.targetPlatform }}.zip
-          tag: ${{ github.ref }}
-          overwrite: true
-          body: ${{ github.event.release.body }}
 
   deployToGitHubPages:
     name: Deploy to the Web via GitHub Pages
@@ -156,6 +128,9 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          lfs: true
       - name: Download WebGL Artifact
         uses: actions/download-artifact@v3
         with:

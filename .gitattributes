@@ -72,6 +72,7 @@
 *.dds lfs-file
 *.gif lfs-file
 *.hdr lfs-file
+*.ico lfs-file
 *.iff lfs-file
 *.jpeg lfs-file
 *.jpg lfs-file

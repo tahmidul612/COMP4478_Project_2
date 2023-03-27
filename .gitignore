@@ -76,5 +76,4 @@ crashlytics-build.properties
 /[Cc]odeCoverage/
 
 # TextMesh Pro
-/[Aa]ssets/[Tt]extMesh*Pro/
-/[Aa]ssets/[Tt]extMesh*Pro.meta
+/[Aa]ssets/[Tt]extMesh*Pro/Documentation*

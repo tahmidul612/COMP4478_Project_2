@@ -149,3 +149,6 @@
 *.rar lfs-file
 *.tar lfs-file
 *.zip lfs-file
+
+# Exclude docs directory from LFS tracking
+/docs/* -filter=lfs -text

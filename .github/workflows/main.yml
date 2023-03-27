@@ -151,10 +151,8 @@ jobs:
 
       - name: Archive artifact
         env:
-          RUNNER_TEMP: ${{ format('{0}/tmp-docs', github.workspace) }}
           INPUT_PATH: ${{ format('{0}/build/WebGL', github.workspace) }}
         run: |
-          mkdir $RUNNER_TEMP
           chmod -c -R +rX "$INPUT_PATH" | while read line; do
             echo "::warning title=Invalid file permissions automatically fixed::$line"
           done
@@ -168,8 +166,6 @@ jobs:
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3
-        env:
-          RUNNER_TEMP: ${{ format('{0}/tmp-docs', github.workspace) }}
         with:
           name: webgl-gh-pages
           path: $RUNNER_TEMP/artifact.tar

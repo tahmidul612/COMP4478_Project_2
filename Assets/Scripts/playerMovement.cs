@@ -46,7 +46,7 @@ public class playerMovement : MonoBehaviour
     }
 
     void OnCollisionStay2D(Collision2D coll){
-        if (coll.gameObject.tag == "Floor" || coll.gameObject.name == "Tilemap"){
+        if (coll.gameObject.tag == "Floor" || coll.gameObject.tag == "CollisionMap"){
             playerJump(coll, 0, jump);
         }
         if (coll.gameObject.tag == "Wall"){

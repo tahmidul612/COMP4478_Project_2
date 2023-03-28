@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 124558285}
   - component: {fileID: 124558284}
   - component: {fileID: 124558286}
+  - component: {fileID: 124558287}
   m_Layer: 0
   m_Name: Bouncy
   m_TagString: CollisionMap
@@ -330,6 +331,21 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
+--- !u!114 &124558287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124558282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c333aa462c143be4e82711a40e716446, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isSticky: 0
+  isBouncy: 1
+  isSlidey: 0
 --- !u!1 &444681126
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,6 +358,7 @@ GameObject:
   - component: {fileID: 444681129}
   - component: {fileID: 444681128}
   - component: {fileID: 444681130}
+  - component: {fileID: 444681131}
   m_Layer: 0
   m_Name: Normal
   m_TagString: CollisionMap
@@ -1220,13 +1237,28 @@ TilemapCollider2D:
   m_GameObject: {fileID: 444681126}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: bdce7ca7f5550614bb6e113ec0028139, type: 2}
+  m_Material: {fileID: 6200000, guid: fc0677a6073d37d4e93980e0002806b4, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
+--- !u!114 &444681131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 444681126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c333aa462c143be4e82711a40e716446, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isSticky: 0
+  isBouncy: 0
+  isSlidey: 0
 --- !u!4 &480653335 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9145576845162860105, guid: a0252bba53685e1489c5aa2a9414e1dd, type: 3}
@@ -1388,6 +1420,7 @@ GameObject:
   - component: {fileID: 917675523}
   - component: {fileID: 917675522}
   - component: {fileID: 917675524}
+  - component: {fileID: 917675525}
   m_Layer: 0
   m_Name: Slippery
   m_TagString: CollisionMap
@@ -1647,6 +1680,21 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
+--- !u!114 &917675525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 917675520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c333aa462c143be4e82711a40e716446, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isSticky: 0
+  isBouncy: 0
+  isSlidey: 1
 --- !u!1 &922118542 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4422355636868319759, guid: 3a454e1cc0b84964187d6581d2ce64d6, type: 3}
@@ -1675,6 +1723,10 @@ PrefabInstance:
     - target: {fileID: 4422355636868319759, guid: 3a454e1cc0b84964187d6581d2ce64d6, type: 3}
       propertyPath: m_Name
       value: Main Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 4422355636868319986, guid: 3a454e1cc0b84964187d6581d2ce64d6, type: 3}
+      propertyPath: m_AssetsPPU
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 4422355636868319986, guid: 3a454e1cc0b84964187d6581d2ce64d6, type: 3}
       propertyPath: m_RefResolutionX
@@ -1777,6 +1829,7 @@ GameObject:
   - component: {fileID: 1807088137}
   - component: {fileID: 1807088136}
   - component: {fileID: 1807088138}
+  - component: {fileID: 1807088139}
   m_Layer: 0
   m_Name: Sticky
   m_TagString: CollisionMap
@@ -2050,6 +2103,21 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
+--- !u!114 &1807088139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1807088134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c333aa462c143be4e82711a40e716446, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isSticky: 1
+  isBouncy: 0
+  isSlidey: 0
 --- !u!1 &2020660218
 GameObject:
   m_ObjectHideFlags: 0
@@ -2292,13 +2360,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9145576845162860106, guid: a0252bba53685e1489c5aa2a9414e1dd, type: 3}
+      propertyPath: jump
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 9145576845162860117, guid: a0252bba53685e1489c5aa2a9414e1dd, type: 3}
       propertyPath: m_Name
       value: ProtoPlayer
       objectReference: {fileID: 0}
     - target: {fileID: 9145576845162860118, guid: a0252bba53685e1489c5aa2a9414e1dd, type: 3}
       propertyPath: m_LinearDrag
-      value: 0.6
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0252bba53685e1489c5aa2a9414e1dd, type: 3}

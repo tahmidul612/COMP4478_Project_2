@@ -77,3 +77,6 @@ crashlytics-build.properties
 
 # TextMesh Pro
 /[Aa]ssets/[Tt]extMesh*Pro/Documentation*
+
+# Other files
+*.code-workspace

@@ -66,4 +66,6 @@ public class playerMovement : MonoBehaviour
             rb.AddForce(jumpHeight, ForceMode2D.Impulse);
         }
     }
+
+
 }

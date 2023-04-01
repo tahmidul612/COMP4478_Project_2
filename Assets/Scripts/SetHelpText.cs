@@ -3,49 +3,16 @@ using UnityEngine;
 
 public class SetHelpText : MonoBehaviour
 {
-    TMPro.TMP_Text text;
-    string storeText;
     private Coroutine writeTextActive;
-    private void Start()
-    {
-        text = GameObject.Find("Canvas/Help Popup").transform.GetChild(0).GetComponent<TMPro.TMP_Text>();
-    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.name == "Player")
         {
-            Debug.Log(GameObject.Find("Canvas/Help Popup"));
-            text.text = "";
-            storeText = GenerateHelpText();
-            if (writeTextActive == null)
-            {
-                writeTextActive = StartCoroutine(WriteText(storeText));
-            }
+            GeneratePopup.Instance.showHelpText(generateHelpText());
+            this.GetComponent<BoxCollider2D>().enabled = false;
         }
     }
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.name == "Player")
-        {
-            StartCoroutine(ResetText());
-        }
-    }
-    IEnumerator ResetText()
-    {
-        yield return new WaitUntil(() => writeTextActive == null);
-        text.text = "";
-    }
-    IEnumerator WriteText(string helpText)
-    {
-        foreach (char c in helpText)
-        {
-            text.text += c;
-            yield return new WaitForSeconds(0.1f);
-        }
-        yield return new WaitForSeconds(2f);
-        writeTextActive = null;
-    }
-    private string GenerateHelpText()
+    private string generateHelpText()
     {
         return this.name switch
         {

@@ -12,34 +12,67 @@ public class SettingsController : MonoBehaviour
     [SerializeField] private AudioMixer mainMixer;
     private void Start()
     {
-        // Get all resolutions
-        resolutions = Screen.resolutions;
+        setupResolutions();
+        setupDisplays();
+    }
 
-        resolutionDropdown.ClearOptions();
-        List<string> options = new List<string>();
-
-        int currentResolutionIndex = 0;
-        // Add all resolutions to the dropdown
-        for (int i = 0; i < resolutions.Length; i++)
+    private void setupDisplays()
+    {
+        displays = new List<Display>();
+        displays.AddRange(Display.displays);
+        displayDropdown.ClearOptions();
+        for (int i=0; i<displays.Count; i++)
         {
-            string option = resolutions[i].width + " x " + resolutions[i].height + " @ " + resolutions[i].refreshRate + "Hz";
-            options.Add(option);
-            // Check if the game screen resolution matches to one of the
-            // available resolutions and set it as the current resolution value
-            // in the dropdown
-            if (resolutions[i].width == Screen.width && resolutions[i].height == Screen.height)
-            {
-                currentResolutionIndex = i;
-            }
+            displayDropdown.options.Add(new TMPro.TMP_Dropdown.OptionData("Display " + (i+1).ToString()));
         }
-        resolutionDropdown.AddOptions(options);
-        resolutionDropdown.value = currentResolutionIndex;
+        displayDropdown.onValueChanged.AddListener(delegate { SetDisplay(displayDropdown.value); });
+        displayDropdown.RefreshShownValue();
+    }
+
+    private void setupResolutions()
+    {
+        // populate Resolution[] list with 3 resolutions (360p, 720p and 1080p)
+        int currentRefreshRate = Screen.currentResolution.refreshRate;
+        Resolution currentResolution = new Resolution
+            {
+                width = Screen.width,
+                height = Screen.height,
+                refreshRate = currentRefreshRate
+            };
+        resolutions = new List<Resolution>();
+        resolutions.AddRange(new Resolution[]
+        {
+            new Resolution {width = 640, height = 360, refreshRate = currentRefreshRate},
+            new Resolution {width = 1280, height = 720, refreshRate = currentRefreshRate},
+            new Resolution {width = 1920, height = 1080, refreshRate = currentRefreshRate},
+            new Resolution {width = 2560, height = 1440, refreshRate = currentRefreshRate},
+            new Resolution {width = 3840, height = 2160, refreshRate = currentRefreshRate},
+            currentResolution
+        });
+        resolutions = resolutions.Distinct().ToList();
+        resolutions = resolutions.OrderBy(res => res.width).ToList();
+        // Add all resolutions to the dropdown
+        resolutionDropdown.ClearOptions();
+        resolutionDropdown.AddOptions(resolutions.Select(res => res.ToString()).ToList());
+        resolutionDropdown.value = resolutions.IndexOf(currentResolution);
         resolutionDropdown.RefreshShownValue();
+        resolutionDropdown.onValueChanged.AddListener(delegate { SetResolution(resolutionDropdown.value); });
+    }
+
+    private void SetDisplay(int displayIndex)
+    {
+        // PlayerPrefs.SetInt("UnitySelectMonitor", displayIndex);
     }
 
     // Set volume
+    private void SetResolution(int resolutionIndex)
+    {
+        Resolution resolution = resolutions[resolutionIndex];
+        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+    }
     public void SetVolume(float volume)
     {
         mainMixer.SetFloat("mainVolume", volume);
     }
+
 }

@@ -8651,6 +8651,48 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: doorlight
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 304
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f81db24dd065fb044b8bb44d623f44e4
+      internalID: 1113710844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: door
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 270
+        width: 36
+        height: 36
+      alignment: 9
+      pivot: {x: -25.376844, y: -6.7764893}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33c33c212b50f9b48b780a9968710037
+      internalID: -1597770877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -8662,6 +8704,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      door: -1597770877
+      doorlight: 1113710844
       industrial.v2_0: 1615931025
       industrial.v2_1: -176482216
       industrial.v2_10: 1732601573

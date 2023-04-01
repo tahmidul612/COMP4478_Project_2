@@ -5,9 +5,11 @@ using UnityEngine.Audio;
 
 public class SettingsController : MonoBehaviour
 {
-    public TMPro.TMP_Dropdown resolutionDropdown;
-    private Resolution[] resolutions;
-    public AudioMixer mainMixer;
+    [SerializeField] private TMPro.TMP_Dropdown resolutionDropdown;
+    [SerializeField] private TMPro.TMP_Dropdown displayDropdown;
+    private List<Resolution> resolutions;
+    private List<Display> displays;
+    [SerializeField] private AudioMixer mainMixer;
     private void Start()
     {
         // Get all resolutions

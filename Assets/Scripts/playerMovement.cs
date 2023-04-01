@@ -10,11 +10,14 @@ public class playerMovement : MonoBehaviour
     private Vector2 jumpHeight;
     Rigidbody2D rb;
     float lastDirection;
+
+    Animator playerAnim;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        
+        playerAnim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -46,7 +49,7 @@ public class playerMovement : MonoBehaviour
     }
 
     void OnCollisionStay2D(Collision2D coll){
-        if (coll.gameObject.tag == "Floor" || coll.gameObject.tag == "CollisionMap"){
+        if (coll.gameObject.tag == "Ground" || coll.gameObject.tag == "CollisionMap"){
             playerJump(coll, 0, jump);
         }
         if (coll.gameObject.tag == "Wall"){

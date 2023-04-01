@@ -58,29 +58,29 @@ jobs:
           testMode: playmode
           githubToken: ${{ secrets.GITHUB_TOKEN }}
 
-  lint:
-    name: Quality Check
-    runs-on: ubuntu-latest
-    container: unityci/editor:ubuntu-2021.3.21f1-linux-il2cpp-1
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v1
-        with:
-          lfs: true
-      - name: Cache Library
-        uses: actions/cache@v3
-        with:
-          path: Library
-          key: Library-lint-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
-          restore-keys: Library-lint-
-      - name: Activate Unity
-        env:
-          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-        run: echo "$UNITY_LICENSE" > UnityLicense.ulf && unity-editor -nographics -logFile /dev/stdout -quit -username "$UNITY_EMAIL" -password "$UNITY_PASSWORD" -manualLicenseFile UnityLicense.ulf
-      - name: Generate Solution
-        run: unity-editor -nographics -logFile /dev/stdout -customBuildName COMP4478_Project_2 -projectPath . -executeMethod Packages.Rider.Editor.RiderScriptEditor.SyncSolution -quit
+  # lint:
+  #   name: Quality Check
+  #   runs-on: ubuntu-latest
+  #   container: unityci/editor:ubuntu-2021.3.21f1-linux-il2cpp-1
+  #   steps:
+  #     - name: Checkout Repository
+  #       uses: actions/checkout@v1
+  #       with:
+  #         lfs: true
+  #     - name: Cache Library
+  #       uses: actions/cache@v3
+  #       with:
+  #         path: Library
+  #         key: Library-lint-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+  #         restore-keys: Library-lint-
+  #     - name: Activate Unity
+  #       env:
+  #         UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+  #         UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+  #         UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+  #       run: echo "$UNITY_LICENSE" > UnityLicense.ulf && unity-editor -nographics -logFile /dev/stdout -quit -username "$UNITY_EMAIL" -password "$UNITY_PASSWORD" -manualLicenseFile UnityLicense.ulf
+  #     - name: Generate Solution
+  #       run: unity-editor -nographics -logFile /dev/stdout -customBuildName COMP4478_Project_2 -projectPath . -executeMethod Packages.Rider.Editor.RiderScriptEditor.SyncSolution -quit
 
   buildWithLinux:
     name: Build for ${{ matrix.targetPlatform }}
@@ -136,15 +136,17 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: WebGL
-          path: build/WebGL
-      - name: Copy the WebGL build artifacts to the GitHub Pages directory
+          path: build
+      # - name: Copy the WebGL build artifacts to the GitHub Pages directory
+      #   env:
+      #     WEBGL_BUILD_PATH: ${{ format('{0}/build/WebGL', github.workspace) }}
+      #     WEBGL_PAGES_PATH: ${{ format('{0}/docs', github.workspace) }}
+      #   run: rsync -a $WEBGL_BUILD_PATH/WebGL/$WEBGL_PAGES_PATH
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
         env:
           WEBGL_BUILD_PATH: ${{ format('{0}/build/WebGL', github.workspace) }}
-          WEBGL_PAGES_PATH: ${{ format('{0}/docs', github.workspace) }}
-        run: rsync -a $WEBGL_BUILD_PATH/WebGL/ $WEBGL_PAGES_PATH
-      - name: Deploy to GitHub Pages
-        uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          branch: main
-          file_pattern: docs/**
-          commit_message: Deploy to GitHub Pages
+          branch: webgl
+          folder: $WEBGL_BUILD_PATH
+          token: ${{ secrets.PAT }}

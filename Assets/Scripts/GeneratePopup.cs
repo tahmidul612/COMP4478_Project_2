@@ -18,6 +18,7 @@ public class GeneratePopup : MonoBehaviour
     }
     private void Start()
     {
+        // TODO: Find a better way to get the text component
         text = GameObject.Find("Canvas/Help Popup").transform.GetChild(0).GetComponent<TMPro.TMP_Text>();
         inProgress = null;
     }

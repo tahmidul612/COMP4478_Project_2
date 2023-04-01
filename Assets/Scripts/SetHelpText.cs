@@ -49,11 +49,11 @@ public class SetHelpText : MonoBehaviour
     {
         return this.name switch
         {
-            "Slime" => "Watch out for the slime on the floor! It's slippery",
+            "Slippery" => "Watch out for the slime on the floor! It's slippery",
             "Spike" => "Watch out for the spikes! They're sharp",
             "Sticky" => "You can stick to the walls with the sticky slime",
             "Bouncy" => "You can bounce off the bouncy slime",
-            _ => "Make sure you use the collect all the coins!"
+            _ => ""
         };
     }
 }

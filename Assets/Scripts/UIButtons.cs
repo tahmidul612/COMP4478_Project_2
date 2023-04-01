@@ -5,13 +5,12 @@ using UnityEngine.UI;
 public class UIButtons : MonoBehaviour
 {
     [SerializeField] private GameObject cornerButtonsPanel;
-    private Button fullScreenButton;
     private void Start()
     {
         // Fullscreen button
-        fullScreenButton = cornerButtonsPanel.transform.Find("Fullscreen").GetComponent<Button>();
-        fullScreenIcon(Screen.fullScreen);
-        fullScreenButton.onClick.AddListener(delegate { SetFullScreen(); });
+        Button fullScreenButton = cornerButtonsPanel.transform.Find("Fullscreen").GetComponent<Button>();
+        fullScreenIcon(fullScreenButton, Screen.fullScreen);
+        fullScreenButton.onClick.AddListener(delegate { SetFullScreen(fullScreenButton, Screen.fullScreen); });
         // Pause button
         Button pauseButton = cornerButtonsPanel.transform.Find("Pause").GetComponent<Button>();
         if (SceneManager.GetActiveScene().name == "MainGame") {
@@ -21,16 +20,16 @@ public class UIButtons : MonoBehaviour
             pauseButton.gameObject.SetActive(false);
         }
     }
-    private void SetFullScreen()
+    private void SetFullScreen(Button button, bool isFullscreen)
     {
-        Screen.fullScreen = !Screen.fullScreen;
-        fullScreenIcon(Screen.fullScreen);
+        Screen.fullScreen = !isFullscreen;
+        fullScreenIcon(button, !isFullscreen);
     }
-    private void fullScreenIcon(bool value)
+    private void fullScreenIcon(Button button, bool value)
     {
         // larger
-        fullScreenButton.transform.GetChild(0).GetComponent<Image>().enabled = !value;
+        button.transform.GetChild(0).GetComponent<Image>().enabled = !value;
         // smaller
-        fullScreenButton.transform.GetChild(1).GetComponent<Image>().enabled = value;
+        button.transform.GetChild(1).GetComponent<Image>().enabled = value;
     }
 }

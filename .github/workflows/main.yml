@@ -91,6 +91,7 @@ jobs:
       matrix:
         targetPlatform:
           - WebGL
+          - StandaloneWindows64
     outputs:
       buildVersion: ${{ steps.build.outputs.buildVersion }}
     steps:
@@ -119,6 +120,21 @@ jobs:
         with:
           name: ${{ matrix.targetPlatform }}
           path: build/${{ matrix.targetPlatform }}
+      - name: Zip Build
+        uses: montudor/action-zip@v1
+        if: github.event.action == 'published' && matrix.targetPlatform == 'StandaloneWindows64'
+        with:
+          args: zip -qq -r build/${{ matrix.targetPlatform }}.zip build/${{ matrix.targetPlatform }}
+      - name: Upload Zip to GitHub Release
+        uses: svenstaro/upload-release-action@v2
+        if: github.event.action == 'published' && matrix.targetPlatform == 'StandaloneWindows64'
+        with:
+          repo_token: ${{ secrets.PAT }}
+          asset_name: ${{ matrix.targetPlatform }}.zip
+          file: build/${{ matrix.targetPlatform }}.zip
+          tag: ${{ github.ref }}
+          overwrite: true
+          body: ${{ github.event.release.body }}
 
   deployToGitHubPages:
     name: Deploy to the Web via GitHub Pages
@@ -136,7 +152,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: WebGL
-          path: build
+          path: build/WebGL
       # - name: Copy the WebGL build artifacts to the GitHub Pages directory
       #   env:
       #     WEBGL_BUILD_PATH: ${{ format('{0}/build/WebGL', github.workspace) }}
@@ -145,7 +161,7 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         env:
-          WEBGL_BUILD_PATH: ${{ format('{0}/build/WebGL', github.workspace) }}
+          WEBGL_BUILD_PATH: ${{ format('{0}/build/WebGL/WebGL', github.workspace) }}
         with:
           branch: webgl
           folder: $WEBGL_BUILD_PATH

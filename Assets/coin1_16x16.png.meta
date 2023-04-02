@@ -1,7 +1,52 @@
 fileFormatVersion: 2
-guid: 7f4d620bb06d95b458b16741cbf28dec
+guid: 58127d9fc87bbb243be5f0f73b462104
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 8351310047346322849
+    second: coin1_16x16_0
+  - first:
+      213: 2491249841336161255
+    second: coin1_16x16_1
+  - first:
+      213: -7857889921525377389
+    second: coin1_16x16_2
+  - first:
+      213: -1235332431394035030
+    second: coin1_16x16_3
+  - first:
+      213: 1714394902242884827
+    second: coin1_16x16_4
+  - first:
+      213: -1773234535841616673
+    second: coin1_16x16_5
+  - first:
+      213: 3043442069003286871
+    second: coin1_16x16_6
+  - first:
+      213: -6879165548343809189
+    second: coin1_16x16_7
+  - first:
+      213: 3518750182145051838
+    second: coin1_16x16_8
+  - first:
+      213: -6482375289635214745
+    second: coin1_16x16_9
+  - first:
+      213: 1511023520300101926
+    second: coin1_16x16_10
+  - first:
+      213: -3900516316030378540
+    second: coin1_16x16_11
+  - first:
+      213: 2708702147264179745
+    second: coin1_16x16_12
+  - first:
+      213: 5991613614249543563
+    second: coin1_16x16_13
+  - first:
+      213: 4051696905649449785
+    second: coin1_16x16_14
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -33,7 +78,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -63,14 +108,14 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
-  cookieLightType: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -79,6 +124,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -101,18 +158,6 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -120,23 +165,24 @@ TextureImporter:
       name: coin1_16x16_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 16
-        height: 16
+        x: 1
+        y: 1
+        width: 14
+        height: 14
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
-      - - {x: -5, y: -5}
-        - {x: -5, y: 5}
-        - {x: 5, y: 5}
-        - {x: 5, y: -5}
+      - - {x: -7, y: 7}
+        - {x: -7, y: -6}
+        - {x: -6, y: -7}
+        - {x: 7, y: -7}
+        - {x: 7, y: 7}
       tessellationDetail: 0
       bones: []
-      spriteID: 3a3d314580b581146875587aa63a65f6
-      internalID: -1060653269
+      spriteID: 1ad6a3dad30d5e370800000000000000
+      internalID: 8351310047346322849
       vertices: []
       indices: 
       edges: []
@@ -145,23 +191,24 @@ TextureImporter:
       name: coin1_16x16_1
       rect:
         serializedVersion: 2
-        x: 16
-        y: 0
-        width: 16
-        height: 16
+        x: 18
+        y: 1
+        width: 13
+        height: 14
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
-      - - {x: -4, y: -4}
-        - {x: -4, y: 5}
-        - {x: 5, y: 5}
-        - {x: 5, y: -4}
+      - - {x: -6.5, y: 7}
+        - {x: -6.5, y: -6}
+        - {x: -5.5, y: -7}
+        - {x: 6.5, y: -7}
+        - {x: 6.5, y: 7}
       tessellationDetail: 0
       bones: []
-      spriteID: ef7d2948cf4944942b0291e50fd12b7d
-      internalID: 1726316176
+      spriteID: 7e3179f0882b29220800000000000000
+      internalID: 2491249841336161255
       vertices: []
       indices: 
       edges: []
@@ -170,23 +217,24 @@ TextureImporter:
       name: coin1_16x16_2
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
-        width: 16
-        height: 16
+        x: 34
+        y: 1
+        width: 12
+        height: 14
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
-      - - {x: -4, y: -5}
-        - {x: -4, y: 5}
-        - {x: 4, y: 5}
-        - {x: 4, y: -5}
+      - - {x: -6, y: 7}
+        - {x: -6, y: -6}
+        - {x: -5, y: -7}
+        - {x: 6, y: -7}
+        - {x: 6, y: 7}
       tessellationDetail: 0
       bones: []
-      spriteID: edbf3ea78fdabe0419b642d8b8427f89
-      internalID: 470583488
+      spriteID: 3969b5fcfba23f290800000000000000
+      internalID: -7857889921525377389
       vertices: []
       indices: 
       edges: []
@@ -195,23 +243,24 @@ TextureImporter:
       name: coin1_16x16_3
       rect:
         serializedVersion: 2
-        x: 48
-        y: 0
-        width: 16
-        height: 16
+        x: 51
+        y: 1
+        width: 11
+        height: 14
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
-      - - {x: -3, y: -5}
-        - {x: -3, y: 5}
-        - {x: 4, y: 5}
-        - {x: 4, y: -5}
+      - - {x: -5.5, y: 7}
+        - {x: -5.5, y: -6}
+        - {x: -4.5, y: -7}
+        - {x: 5.5, y: -7}
+        - {x: 5.5, y: 7}
       tessellationDetail: 0
       bones: []
-      spriteID: 7025a08b950ce2344975962a573208a8
-      internalID: -7838525
+      spriteID: aaa2d3fd2b73bdee0800000000000000
+      internalID: -1235332431394035030
       vertices: []
       indices: 
       edges: []
@@ -220,23 +269,24 @@ TextureImporter:
       name: coin1_16x16_4
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
-        width: 16
-        height: 16
+        x: 67
+        y: 1
+        width: 10
+        height: 14
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
-      - - {x: -3, y: -5}
-        - {x: -3, y: 5}
-        - {x: 3, y: 5}
-        - {x: 3, y: -5}
+      - - {x: -5, y: 7}
+        - {x: -5, y: -6}
+        - {x: -4, y: -7}
+        - {x: 5, y: -7}
+        - {x: 5, y: 7}
       tessellationDetail: 0
       bones: []
-      spriteID: 3ed3d1cd89beef9469d536b035a9655c
-      internalID: -1188250990
+      spriteID: bdc7de09411cac710800000000000000
+      internalID: 1714394902242884827
       vertices: []
       indices: 
       edges: []
@@ -245,23 +295,27 @@ TextureImporter:
       name: coin1_16x16_5
       rect:
         serializedVersion: 2
-        x: 80
-        y: 0
-        width: 16
-        height: 16
+        x: 83
+        y: 1
+        width: 9
+        height: 14
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
-      - - {x: -3, y: -5}
-        - {x: -3, y: 4}
-        - {x: 2, y: 4}
-        - {x: 2, y: -5}
+      - - {x: -3.5, y: 7}
+        - {x: -4.5, y: 6}
+        - {x: -4.5, y: -6}
+        - {x: -3.5, y: -7}
+        - {x: 3.5, y: -7}
+        - {x: 4.5, y: -6}
+        - {x: 4.5, y: 6}
+        - {x: 3.5, y: 7}
       tessellationDetail: 0
       bones: []
-      spriteID: 70017c747755bff4eb69c710da6297d9
-      internalID: 1548092599
+      spriteID: fdca4bba5943467e0800000000000000
+      internalID: -1773234535841616673
       vertices: []
       indices: 
       edges: []
@@ -270,23 +324,23 @@ TextureImporter:
       name: coin1_16x16_6
       rect:
         serializedVersion: 2
-        x: 96
-        y: 0
-        width: 16
-        height: 16
+        x: 100
+        y: 1
+        width: 7
+        height: 14
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
-      - - {x: -2, y: -5}
-        - {x: -2, y: 5}
-        - {x: 2, y: 5}
-        - {x: 2, y: -5}
+      - - {x: -3.5, y: 7}
+        - {x: -3.5, y: -7}
+        - {x: 3.5, y: -7}
+        - {x: 3.5, y: 7}
       tessellationDetail: 0
       bones: []
-      spriteID: b05b2be3b5ff57d41898faac1638e2b0
-      internalID: -332785440
+      spriteID: 759bb69df6a7c3a20800000000000000
+      internalID: 3043442069003286871
       vertices: []
       indices: 
       edges: []
@@ -295,23 +349,23 @@ TextureImporter:
       name: coin1_16x16_7
       rect:
         serializedVersion: 2
-        x: 112
-        y: 0
-        width: 16
-        height: 16
+        x: 117
+        y: 1
+        width: 5
+        height: 14
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
-      - - {x: -2, y: -5}
-        - {x: -2, y: 5}
-        - {x: 1, y: 5}
-        - {x: 1, y: -5}
+      - - {x: -2.5, y: 7}
+        - {x: -2.5, y: -7}
+        - {x: 2.5, y: -7}
+        - {x: 2.5, y: 7}
       tessellationDetail: 0
       bones: []
-      spriteID: cef146223b9a2c740b114f138cb986e2
-      internalID: -2143727905
+      spriteID: b5bacd3916b4880a0800000000000000
+      internalID: -6879165548343809189
       vertices: []
       indices: 
       edges: []
@@ -320,23 +374,23 @@ TextureImporter:
       name: coin1_16x16_8
       rect:
         serializedVersion: 2
-        x: 128
-        y: 0
-        width: 16
-        height: 16
+        x: 132
+        y: 1
+        width: 7
+        height: 14
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
-      - - {x: -2, y: -5}
-        - {x: -2, y: 5}
-        - {x: 2, y: 5}
-        - {x: 2, y: -5}
+      - - {x: -3.5, y: 7}
+        - {x: -3.5, y: -7}
+        - {x: 3.5, y: -7}
+        - {x: 3.5, y: 7}
       tessellationDetail: 0
       bones: []
-      spriteID: a3c4e67018004204e85fa4db7391b290
-      internalID: -589793358
+      spriteID: ebcc814c5ac15d030800000000000000
+      internalID: 3518750182145051838
       vertices: []
       indices: 
       edges: []
@@ -345,23 +399,27 @@ TextureImporter:
       name: coin1_16x16_9
       rect:
         serializedVersion: 2
-        x: 144
-        y: 0
-        width: 16
-        height: 16
+        x: 147
+        y: 1
+        width: 9
+        height: 14
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
-      - - {x: -3, y: -5}
-        - {x: -3, y: 5}
-        - {x: 2, y: 5}
-        - {x: 2, y: -5}
+      - - {x: -3.5, y: 7}
+        - {x: -4.5, y: 6}
+        - {x: -4.5, y: -6}
+        - {x: -3.5, y: -7}
+        - {x: 3.5, y: -7}
+        - {x: 4.5, y: -6}
+        - {x: 4.5, y: 6}
+        - {x: 3.5, y: 7}
       tessellationDetail: 0
       bones: []
-      spriteID: 26f9ef53b1ce49a4184a069932699c8e
-      internalID: -1510175905
+      spriteID: 76ae588e40af906a0800000000000000
+      internalID: -6482375289635214745
       vertices: []
       indices: 
       edges: []
@@ -370,23 +428,24 @@ TextureImporter:
       name: coin1_16x16_10
       rect:
         serializedVersion: 2
-        x: 160
-        y: 0
-        width: 16
-        height: 16
+        x: 163
+        y: 1
+        width: 10
+        height: 14
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
-      - - {x: -3, y: -5}
-        - {x: -3, y: 5}
-        - {x: 3, y: 5}
-        - {x: 3, y: -5}
+      - - {x: -5, y: 7}
+        - {x: -5, y: -6}
+        - {x: -4, y: -7}
+        - {x: 5, y: -7}
+        - {x: 5, y: 7}
       tessellationDetail: 0
       bones: []
-      spriteID: 62a6fe90719aac54e8a5462f6453fca4
-      internalID: -1058182295
+      spriteID: 6217fbec2eb38f410800000000000000
+      internalID: 1511023520300101926
       vertices: []
       indices: 
       edges: []
@@ -395,23 +454,24 @@ TextureImporter:
       name: coin1_16x16_11
       rect:
         serializedVersion: 2
-        x: 176
-        y: 0
-        width: 16
-        height: 16
+        x: 179
+        y: 1
+        width: 11
+        height: 14
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
-      - - {x: -3, y: -5}
-        - {x: -3, y: 5}
-        - {x: 4, y: 5}
-        - {x: 4, y: -5}
+      - - {x: -5.5, y: 7}
+        - {x: -5.5, y: -6}
+        - {x: -4.5, y: -7}
+        - {x: 5.5, y: -7}
+        - {x: 5.5, y: 7}
       tessellationDetail: 0
       bones: []
-      spriteID: 31a0facfbc39b2643a5c88203582799e
-      internalID: -2070261072
+      spriteID: 4ddd46e83159ed9c0800000000000000
+      internalID: -3900516316030378540
       vertices: []
       indices: 
       edges: []
@@ -420,23 +480,24 @@ TextureImporter:
       name: coin1_16x16_12
       rect:
         serializedVersion: 2
-        x: 192
-        y: 0
-        width: 16
-        height: 16
+        x: 194
+        y: 1
+        width: 12
+        height: 14
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
-      - - {x: -4, y: -5}
-        - {x: -4, y: 5}
-        - {x: 4, y: 5}
-        - {x: 4, y: -5}
+      - - {x: -6, y: 7}
+        - {x: -6, y: -6}
+        - {x: -5, y: -7}
+        - {x: 6, y: -7}
+        - {x: 6, y: 7}
       tessellationDetail: 0
       bones: []
-      spriteID: 16ef8951d62e0e6408ab9bc540d5f463
-      internalID: -410185852
+      spriteID: 12ee40a604e379520800000000000000
+      internalID: 2708702147264179745
       vertices: []
       indices: 
       edges: []
@@ -445,23 +506,24 @@ TextureImporter:
       name: coin1_16x16_13
       rect:
         serializedVersion: 2
-        x: 208
-        y: 0
-        width: 16
-        height: 16
+        x: 210
+        y: 1
+        width: 13
+        height: 14
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
-      - - {x: -4, y: -5}
-        - {x: -4, y: 5}
-        - {x: 4, y: 5}
-        - {x: 4, y: -5}
+      - - {x: -6.5, y: 7}
+        - {x: -6.5, y: -6}
+        - {x: -5.5, y: -7}
+        - {x: 6.5, y: -7}
+        - {x: 6.5, y: 7}
       tessellationDetail: 0
       bones: []
-      spriteID: 6e2411c268439964e8b2b6db0f84a789
-      internalID: 1606481470
+      spriteID: b870db456dc762350800000000000000
+      internalID: 5991613614249543563
       vertices: []
       indices: 
       edges: []
@@ -470,23 +532,24 @@ TextureImporter:
       name: coin1_16x16_14
       rect:
         serializedVersion: 2
-        x: 224
-        y: 0
-        width: 16
-        height: 16
+        x: 226
+        y: 1
+        width: 13
+        height: 14
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
-      - - {x: -4, y: -5}
-        - {x: -4, y: 5}
-        - {x: 5, y: 5}
-        - {x: 5, y: -5}
+      - - {x: -6.5, y: 7}
+        - {x: -6.5, y: -6}
+        - {x: -5.5, y: -7}
+        - {x: 6.5, y: -7}
+        - {x: 6.5, y: 7}
       tessellationDetail: 0
       bones: []
-      spriteID: 05b00c86efa8b984bbae70accd37d842
-      internalID: 51012501
+      spriteID: 93be8ce6ed48a3830800000000000000
+      internalID: 4051696905649449785
       vertices: []
       indices: 
       edges: []
@@ -502,21 +565,21 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      coin1_16x16_0: -1060653269
-      coin1_16x16_1: 1726316176
-      coin1_16x16_10: -1058182295
-      coin1_16x16_11: -2070261072
-      coin1_16x16_12: -410185852
-      coin1_16x16_13: 1606481470
-      coin1_16x16_14: 51012501
-      coin1_16x16_2: 470583488
-      coin1_16x16_3: -7838525
-      coin1_16x16_4: -1188250990
-      coin1_16x16_5: 1548092599
-      coin1_16x16_6: -332785440
-      coin1_16x16_7: -2143727905
-      coin1_16x16_8: -589793358
-      coin1_16x16_9: -1510175905
+      coin1_16x16_0: 8351310047346322849
+      coin1_16x16_1: 2491249841336161255
+      coin1_16x16_10: 1511023520300101926
+      coin1_16x16_11: -3900516316030378540
+      coin1_16x16_12: 2708702147264179745
+      coin1_16x16_13: 5991613614249543563
+      coin1_16x16_14: 4051696905649449785
+      coin1_16x16_2: -7857889921525377389
+      coin1_16x16_3: -1235332431394035030
+      coin1_16x16_4: 1714394902242884827
+      coin1_16x16_5: -1773234535841616673
+      coin1_16x16_6: 3043442069003286871
+      coin1_16x16_7: -6879165548343809189
+      coin1_16x16_8: 3518750182145051838
+      coin1_16x16_9: -6482375289635214745
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

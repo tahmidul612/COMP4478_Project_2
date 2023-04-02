@@ -7,7 +7,6 @@ public class StartGame : MonoBehaviour
 {
     public void StartGameButton()
     {
-        string sceneName = "MainGame";
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using System.Linq;
+using UnityEngine.UI;
 
 public class SettingsController : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class SettingsController : MonoBehaviour
     private List<Resolution> resolutions;
     private List<Display> displays;
     [SerializeField] private AudioMixer mainMixer;
+    
+    public InputField uname;
+
     private void Start()
     {
         setupResolutions();
@@ -79,6 +83,15 @@ public class SettingsController : MonoBehaviour
     public void SetVolume(float volume)
     {
         mainMixer.SetFloat("mainVolume", volume);
+    }
+
+
+
+    public void resetName(){
+
+
+    PlayerPrefs.DeleteKey("username");
+    uname.gameObject.SetActive(true);
     }
 
 }

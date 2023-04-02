@@ -27,7 +27,7 @@ public class High_score : MonoBehaviour
   public void backtomenu()
     {
 
- SceneManager.LoadScene("SampleScene");
+ SceneManager.LoadScene("StartMenu");
     }
 
 

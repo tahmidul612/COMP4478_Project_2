@@ -8,11 +8,12 @@ public class moneyHandler : MonoBehaviour
 {
     // Start is called before the first frame update
     public int moneyCollected = 0;
-    public TextMeshProUGUI self;
+    private TextMeshProUGUI self;
     public int maxCollected;
     private Tilemap tilemap;
 
-    void Start(){
+    void Start() {
+        self = GetComponent<TextMeshProUGUI>();
         tilemap = GameObject.Find("Coins").GetComponent<Tilemap>();
         maxCollected = 0;
 

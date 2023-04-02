@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 5345290766147144287}
   - component: {fileID: 5345290766147144286}
-  - component: {fileID: 5345290766147144285}
+  - component: {fileID: 2896151175787446563}
   - component: {fileID: 5345290766147144284}
   m_Layer: 9
   m_Name: Fire
-  m_TagString: Untagged
+  m_TagString: Hazard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,9 +26,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5345290766147144288}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -19.57, y: -3.75, z: 2}
-  m_LocalScale: {x: 2.5, y: 3, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.31, y: 1.47, z: 2}
+  m_LocalScale: {x: 0.84582305, y: 1.9932964, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5345290766590294947}
@@ -72,21 +72,21 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1246109009
+  m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: f7954fd29b344f746bbdc8555debe4c8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f7954fd29b344f746bbdc8555debe4c8, type: 3}
   m_Color: {r: 0.990566, g: 0.71040565, b: 0.33081162, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.56, y: 2.56}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5345290766147144285
+--- !u!114 &2896151175787446563
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,7 +95,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5345290766147144288}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8c4d04f19860a741ac425af8f27a621, type: 3}
+  m_Script: {fileID: 11500000, guid: d05ed2bf0ad0c63478b7ac94bcd41255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!61 &5345290766147144284
@@ -108,21 +108,21 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.0000016987324, y: 0.2416771}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 2.56, y: 2.56}
+    newSize: {x: 2.56, y: 2.56}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.95366, y: 1.4833542}
   m_EdgeRadius: 0
 --- !u!1 &5345290766586005441
 GameObject:
@@ -134,9 +134,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5345290766586004543}
   - component: {fileID: 5345290766586005440}
+  - component: {fileID: 1314107876538500990}
   m_Layer: 0
   m_Name: Embers
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -148,9 +149,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5345290766586005441}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -19.55, y: -5.01, z: 1}
-  m_LocalScale: {x: 1.775, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.303301, y: 0.4087, z: 1}
+  m_LocalScale: {x: 0.6005343, y: 0.48935425, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5345290766590294947}
@@ -194,20 +195,33 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1246109009
+  m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: f7954fd29b344f746bbdc8555debe4c8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f7954fd29b344f746bbdc8555debe4c8, type: 3}
   m_Color: {r: 0.9245283, g: 0.5343701, b: 0.13431823, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.56, y: 2.56}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!65 &1314107876538500990
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5345290766586005441}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.99999994, y: 1, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5345290766590294948
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,10 +231,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5345290766590294947}
-  - component: {fileID: 5345290766590294946}
+  - component: {fileID: 2896151175408546012}
   m_Layer: 0
   m_Name: FirePlate
-  m_TagString: Untagged
+  m_TagString: Hazard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -233,7 +247,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5345290766590294948}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.156806, y: 1.7338094, z: -0.08440479}
+  m_LocalPosition: {x: 43.91, y: -2.65, z: -0.08440479}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -243,7 +257,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5345290766590294946
+--- !u!114 &2896151175408546012
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -252,7 +266,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5345290766590294948}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6fd7fcc921065248a499beaa8ea5e34, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a5e7ad872a3a2a4080b70a998387268, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fireBlock: {fileID: 5345290766147144288}
@@ -281,9 +295,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5345290767539300682}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -19.6, y: -5.6274, z: -1}
-  m_LocalScale: {x: 2.8573635, y: 0.8451968, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.3304, y: -0.22, z: -1}
+  m_LocalScale: {x: 1.1069304, y: 0.6876521, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5345290766590294947}
@@ -327,15 +341,15 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1246109009
+  m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: f7954fd29b344f746bbdc8555debe4c8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f7954fd29b344f746bbdc8555debe4c8, type: 3}
   m_Color: {r: 0.4056604, g: 0.4056604, b: 0.4056604, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.56, y: 2.56}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

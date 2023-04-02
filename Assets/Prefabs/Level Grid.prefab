@@ -1502,6 +1502,36 @@ MonoBehaviour:
   cameraObject: {fileID: 4422355636868319759, guid: 00ea31abdae47c046b4e1a2f1dbad61c, type: 3}
   speedX: 0.055
   speedY: 0.1
+--- !u!114 &530891291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114097405568161766}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d8418822c471674b9390d8472bb2d56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraObject: {fileID: 0}
+  speedX: 0.055
+  speedY: 0.1
+--- !u!114 &530891292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114097405568161766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1761e51fb0f7484e9f1da444be82f66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraObject: {fileID: 0}
+  speedX: 0.055
+  speedY: 0.1
 --- !u!1 &1114097405650995897
 GameObject:
   m_ObjectHideFlags: 0

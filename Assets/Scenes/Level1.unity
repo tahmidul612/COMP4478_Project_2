@@ -740,6 +740,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level Grid
       objectReference: {fileID: 0}
+    - target: {fileID: 603456406427375601, guid: 98a98b86fd45ef84488092928be12a3c, type: 3}
+      propertyPath: cameraObject
+      value: 
+      objectReference: {fileID: 922118542}
+    - target: {fileID: 603456406427375606, guid: 98a98b86fd45ef84488092928be12a3c, type: 3}
+      propertyPath: cameraObject
+      value: 
+      objectReference: {fileID: 922118542}
+    - target: {fileID: 603456407391534795, guid: 98a98b86fd45ef84488092928be12a3c, type: 3}
+      propertyPath: cameraObject
+      value: 
+      objectReference: {fileID: 922118542}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98a98b86fd45ef84488092928be12a3c, type: 3}
 --- !u!1001 &5016724958915553494

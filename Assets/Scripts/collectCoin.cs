@@ -6,13 +6,15 @@ using UnityEngine.Tilemaps;
 
 public class collectCoin : MonoBehaviour
 {
-    private Vector3 size;
+    public Vector3 size;
     private SpriteRenderer player_renderer;
+    private moneyHandler moneyObj;
     // Start is called before the first frame update
     void Start()
     {
         player_renderer = GameObject.Find("Player").GetComponent<SpriteRenderer>();
         size = player_renderer.bounds.size;
+        moneyObj =  GameObject.Find("MoneyText").GetComponent<moneyHandler>();
     }
 
     // Update is called once per frame
@@ -25,14 +27,15 @@ public class collectCoin : MonoBehaviour
     {
         //Detecting the Grid Position of Player
         if (collision.gameObject.name == "Player")
-        {
-            Debug.Log("Player collided with coin");
+        {        
             Tilemap tilemap = GetComponent<Tilemap>();
+
+            Vector3 hitPosition = Vector3.zero;
             foreach (ContactPoint2D hit in collision.contacts)
             {
                 tilemap.SetTile(tilemap.WorldToCell(hit.point), null);
-                Debug.Log("HitPoint: " + hit.point + "WorldToCell: " + tilemap.WorldToCell(hit.point));
             }
+            moneyObj.moneyCollected++;
         }
  
     }

@@ -5,8 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class StartGame : MonoBehaviour
 {
+    [SerializeField] private string sceneName;
     public void StartGameButton()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        if (sceneName == "") sceneName = "MainGame";
+        SceneManager.LoadScene(sceneName);
     }
 }

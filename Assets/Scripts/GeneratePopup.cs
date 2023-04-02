@@ -48,9 +48,9 @@ public class GeneratePopup : MonoBehaviour
         foreach (char c in helpText)
         {
             text.text += c;
-            yield return new WaitForSecondsRealtime(0.1f);
+            yield return new WaitForSeconds(0.1f);
         }
-        yield return new WaitForSecondsRealtime(2f);
+        yield return new WaitForSeconds(2f);
         inProgress = null;
         text.text = "";
     }

@@ -39,7 +39,8 @@ public class UIButtons : MonoBehaviour
     }
     private void PauseGame()
     {
-        Time.timeScale = isPaused ? 0 : 1;
+        Time.timeScale = isPaused ? 1 : 0;
+        isPaused = !isPaused;
         // GameObject.Find("PauseMenu").GetComponent<Canvas>().enabled = true;
     }
 }

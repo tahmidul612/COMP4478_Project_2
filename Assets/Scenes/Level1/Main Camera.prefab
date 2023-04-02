@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4422355636868319756}
   - component: {fileID: 4422355636868319758}
   - component: {fileID: 4422355636868319986}
-  - component: {fileID: 922118547}
+  - component: {fileID: 7135365748983566574}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -106,7 +106,7 @@ MonoBehaviour:
   m_CropFrameX: 1
   m_CropFrameY: 1
   m_StretchFill: 1
---- !u!114 &922118547
+--- !u!114 &7135365748983566574
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

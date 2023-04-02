@@ -98,10 +98,8 @@ namespace MiniJSON
 
             public static object Parse(string jsonString)
             {
-                using (var instance = new Parser(jsonString))
-                {
-                    return instance.ParseValue();
-                }
+                using var instance = new Parser(jsonString);
+                return instance.ParseValue();
             }
 
             public void Dispose()
@@ -112,7 +110,7 @@ namespace MiniJSON
 
             Dictionary<string, object> ParseObject()
             {
-                Dictionary<string, object> table = new Dictionary<string, object>();
+                Dictionary<string, object> table = new();
 
                 // ditch opening brace
                 json.Read();
@@ -153,7 +151,7 @@ namespace MiniJSON
 
             List<object> ParseArray()
             {
-                List<object> array = new List<object>();
+                List<object> array = new();
 
                 // ditch opening bracket
                 json.Read();
@@ -192,30 +190,22 @@ namespace MiniJSON
 
             object ParseByToken(TOKEN token)
             {
-                switch (token)
+                return token switch
                 {
-                    case TOKEN.STRING:
-                        return ParseString();
-                    case TOKEN.NUMBER:
-                        return ParseNumber();
-                    case TOKEN.CURLY_OPEN:
-                        return ParseObject();
-                    case TOKEN.SQUARED_OPEN:
-                        return ParseArray();
-                    case TOKEN.TRUE:
-                        return true;
-                    case TOKEN.FALSE:
-                        return false;
-                    case TOKEN.NULL:
-                        return null;
-                    default:
-                        return null;
-                }
+                    TOKEN.STRING => ParseString(),
+                    TOKEN.NUMBER => ParseNumber(),
+                    TOKEN.CURLY_OPEN => ParseObject(),
+                    TOKEN.SQUARED_OPEN => ParseArray(),
+                    TOKEN.TRUE => true,
+                    TOKEN.FALSE => false,
+                    TOKEN.NULL => null,
+                    _ => null,
+                };
             }
 
             string ParseString()
             {
-                StringBuilder s = new StringBuilder();
+                StringBuilder s = new();
                 char c;
 
                 // ditch opening quote
@@ -337,7 +327,7 @@ namespace MiniJSON
             {
                 get
                 {
-                    StringBuilder word = new StringBuilder();
+                    StringBuilder word = new();
 
                     while (!IsWordBreak(PeekChar))
                     {
@@ -397,17 +387,13 @@ namespace MiniJSON
                             return TOKEN.NUMBER;
                     }
 
-                    switch (NextWord)
+                    return NextWord switch
                     {
-                        case "false":
-                            return TOKEN.FALSE;
-                        case "true":
-                            return TOKEN.TRUE;
-                        case "null":
-                            return TOKEN.NULL;
-                    }
-
-                    return TOKEN.NONE;
+                        "false" => TOKEN.FALSE,
+                        "true" => TOKEN.TRUE,
+                        "null" => TOKEN.NULL,
+                        _ => TOKEN.NONE,
+                    };
                 }
             }
         }

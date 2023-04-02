@@ -11,7 +11,7 @@ public class SettingsController : MonoBehaviour
     private List<Resolution> resolutions;
     private List<Display> displays;
     [SerializeField] private AudioMixer mainMixer;
-    
+
     public InputField uname;
 
     private void Start()
@@ -37,7 +37,7 @@ public class SettingsController : MonoBehaviour
     {
         // populate Resolution[] list with 3 resolutions (360p, 720p and 1080p)
         int currentRefreshRate = Screen.currentResolution.refreshRate;
-        Resolution currentResolution = new Resolution
+        Resolution currentResolution = new()
         {
             width = Screen.width,
             height = Screen.height,
@@ -56,7 +56,8 @@ public class SettingsController : MonoBehaviour
             currentResolution
             });
         }
-        else {
+        else
+        {
             resolutions.Add(currentResolution);
         }
         resolutions = resolutions.Distinct().ToList();
@@ -87,11 +88,12 @@ public class SettingsController : MonoBehaviour
 
 
 
-    public void resetName(){
+    public void resetName()
+    {
 
 
-    PlayerPrefs.DeleteKey("username");
-    uname.gameObject.SetActive(true);
+        PlayerPrefs.DeleteKey("username");
+        uname.gameObject.SetActive(true);
     }
 
 }

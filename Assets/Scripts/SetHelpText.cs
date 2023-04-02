@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class SetHelpText : MonoBehaviour
 {
-    private Coroutine writeTextActive;
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.name == "Player")

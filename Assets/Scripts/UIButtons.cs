@@ -12,7 +12,7 @@ public class UIButtons : MonoBehaviour
         Button fullScreenButton = cornerButtonsPanel.transform.Find("Fullscreen").GetComponent<Button>();
         fullScreenIcon(fullScreenButton, Screen.fullScreen);
         fullScreenButton.onClick.AddListener(delegate { SetFullScreen(fullScreenButton, Screen.fullScreen); });
-        
+
         // Pause button
         Button pauseButton = cornerButtonsPanel.transform.Find("Pause").GetComponent<Button>();
         if (SceneManager.GetActiveScene().name.Contains("Level"))

@@ -1,13 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Tilemaps;
 using System.IO;
-using UnityEngine.UI;
+using System.Net;
+using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
-using System.Net;
-using System;
+using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 
 public class playerMovement : MonoBehaviour
 {
@@ -20,25 +20,25 @@ public class playerMovement : MonoBehaviour
     public float lastXMove;
     public float lastYMove;
 
-    public int numCoin=0;
+    public int numCoin = 0;
 
 
 
- public ParticleSystem myParticleSystem; // Declare the particle system variable
- public Material gift; // The material to apply to the particle system
- public Material snow;
- private ParticleSystemRenderer particleSystemRenderer; // The renderer for the particle system
- public int onoff_value=3;
- private float updateInterval =2.0f; // The update interval in seconds
- public string uname;
+    public ParticleSystem myParticleSystem; // Declare the particle system variable
+    public Material gift; // The material to apply to the particle system
+    public Material snow;
+    private ParticleSystemRenderer particleSystemRenderer; // The renderer for the particle system
+    public int onoff_value = 3;
+    private float updateInterval = 2.0f; // The update interval in seconds
+    public string uname;
 
 
     // Start is called before the first frame update
     void Start()
     {
 
-         uname =  PlayerPrefs.GetString("username");
-         // Call MyUpdateFunction every updateInterval seconds, starting from 0 seconds
+        uname = PlayerPrefs.GetString("username");
+        // Call MyUpdateFunction every updateInterval seconds, starting from 0 seconds
         InvokeRepeating("MyUpdateFunction", 0.0f, updateInterval);
 
 
@@ -51,10 +51,12 @@ public class playerMovement : MonoBehaviour
         float xMove = Input.GetAxisRaw("Horizontal"); // d key changes value to 1, a key changes value to -1
         float yMove = Input.GetAxisRaw("Vertical"); // w key changes value to 1, s key changes value to -1
 
-        if(xMove != 0){
+        if (xMove != 0)
+        {
             lastXMove = xMove;
         }
-        if(yMove != 0){
+        if (yMove != 0)
+        {
             lastYMove = yMove;
         }
 
@@ -62,47 +64,50 @@ public class playerMovement : MonoBehaviour
         rb.AddForce(force);
 
         Vector3 clampVel = rb.velocity;
-        clampVel.x =  Mathf.Clamp(clampVel.x,-10f, 10f);
+        clampVel.x = Mathf.Clamp(clampVel.x, -10f, 10f);
         rb.velocity = clampVel;
 
         Vector3 clampVelDown = rb.velocity;
-        clampVelDown.y =  Mathf.Clamp(clampVel.y,-10f, 10f);
+        clampVelDown.y = Mathf.Clamp(clampVel.y, -10f, 10f);
         rb.velocity = clampVelDown;
     }
 
-    void OnCollisionStay2D(Collision2D coll){
-        
-        if(Input.GetAxisRaw("Vertical") == 1){
-            if (coll.gameObject.tag == "Ground" || coll.gameObject.name == "Tilemap"){
+    void OnCollisionStay2D(Collision2D coll)
+    {
+
+        if (Input.GetAxisRaw("Vertical") == 1)
+        {
+            if (coll.gameObject.tag == "Ground" || coll.gameObject.name == "Tilemap")
+            {
                 playerJump(coll, 0, jump);
             }
-            if (coll.gameObject.tag == "Wall"){
-                Debug.Log(lastXMove * -1 * (speed/2));
-                playerJump(coll, lastXMove * -1 * (speed/2), jump);
+            if (coll.gameObject.tag == "Wall")
+            {
+                Debug.Log(lastXMove * -1 * (speed / 2));
+                playerJump(coll, lastXMove * -1 * (speed / 2), jump);
             }
         }
 
 
 
-if (coll.gameObject.tag == "Door"){
-          
-          SceneManager.LoadScene("NextScene");
+        if (coll.gameObject.tag == "Door")
+        {
+
+            SceneManager.LoadScene("NextScene");
 
 
-          addScore(uname, 113);
+            addScore(uname, 113);
         }
-
-
-
-
     }
 
-    void playerJump(Collision2D coll, float x, float yMod){
+    void playerJump(Collision2D coll, float x, float yMod)
+    {
         float height = yMod;
-        if(coll.gameObject.GetComponent<customTags>().getBouncy()){
-            height = (float) (yMod * 1.5);
+        if (coll.gameObject.GetComponent<customTags>().getBouncy())
+        {
+            height = (float)(yMod * 1.5);
         }
-        jumpHeight = new Vector2(x,height);
+        jumpHeight = new Vector2(x, height);
         float yMove = Input.GetAxisRaw("Vertical"); // w key changes value to 1, s key changes value to -1
         rb.AddForce(jumpHeight * yMove, ForceMode2D.Impulse);
     }
@@ -114,12 +119,12 @@ if (coll.gameObject.tag == "Door"){
 
 
 
-  // Update is called once per frame
+    // Update is called once per frame
     void MyUpdateFunction()
     {
 
 
-      //instructor change game on off
+        //instructor change game on off
         StartCoroutine(FetchData());
 
         Debug.Log(onoff_value);
@@ -146,35 +151,33 @@ if (coll.gameObject.tag == "Door"){
             Debug.Log("Value of onoff column: " + onoff_value);
         }
 
-         if (onoff_value== 0){
-       
-             // Get the renderer for the particle system
-    particleSystemRenderer = myParticleSystem.GetComponent<ParticleSystemRenderer>();
+        if (onoff_value == 0)
+        {
 
-    // Set the new material
-    particleSystemRenderer.material = snow;
+            // Get the renderer for the particle system
+            particleSystemRenderer = myParticleSystem.GetComponent<ParticleSystemRenderer>();
 
-}
+            // Set the new material
+            particleSystemRenderer.material = snow;
+        }
 
-else if(onoff_value==1){
-      // Get the renderer for the particle system
-    particleSystemRenderer = myParticleSystem.GetComponent<ParticleSystemRenderer>();
+        else if (onoff_value == 1)
+        {
+            // Get the renderer for the particle system
+            particleSystemRenderer = myParticleSystem.GetComponent<ParticleSystemRenderer>();
 
-    // Set the new material
-    particleSystemRenderer.material = gift;
-
-}
-
-
+            // Set the new material
+            particleSystemRenderer.material = gift;
+        }
     }
 
 
 
-// send the name and score to scoremanager script to upload it to php file as form
-       public void addScore( string name, int score)
+    // send the name and score to scoremanager script to upload it to php file as form
+    public void addScore(string name, int score)
     {
         // Create a new ScoreManager object in the scene
-        GameObject scoreManagerObj = new GameObject("ScoreManager");
+        GameObject scoreManagerObj = new("ScoreManager");
         ScoreManager scoreManager = scoreManagerObj.AddComponent<ScoreManager>();
 
         // Set the player name and score
@@ -184,24 +187,4 @@ else if(onoff_value==1){
         // Add the score to the database
         scoreManager.AddScoreToDatabase();
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

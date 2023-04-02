@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ScoreManager : MonoBehaviour
 {
     // public InputField playerName;
-   new public string name;
+    new public string name;
     public int score;
 
 
@@ -24,7 +24,7 @@ public class ScoreManager : MonoBehaviour
         string url = "https://advgamin.000webhostapp.com/ASSIGN2/score.php";
 
         // Create a form with the name and score parameters
-        WWWForm form = new WWWForm();
+        WWWForm form = new();
         //   form.AddField("name", playerName);
         form.AddField("name", name.ToString());
         form.AddField("score", score.ToString());

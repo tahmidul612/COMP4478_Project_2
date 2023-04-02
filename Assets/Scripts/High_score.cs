@@ -1,21 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using TMPro;
-using UnityEngine.SceneManagement;
 using System.IO;
-using UnityEngine.UI;
-using UnityEngine.Networking;
 using System.Net;
-using System;
+using TMPro;
+using UnityEngine;
+using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class High_score : MonoBehaviour
 {
 
 
-  public Text m_Score1;
-  public Text m_Score2;
-  public Text m_Score3;
+    public Text m_Score1;
+    public Text m_Score2;
+    public Text m_Score3;
 
 
 
@@ -24,10 +24,10 @@ public class High_score : MonoBehaviour
 
 
 
-  public void backtomenu()
+    public void backtomenu()
     {
 
- SceneManager.LoadScene("StartMenu");
+        SceneManager.LoadScene("StartMenu");
     }
 
 
@@ -42,7 +42,7 @@ public class High_score : MonoBehaviour
         // Get the response from the web request
         HttpWebResponse response = (HttpWebResponse)request.GetResponse();
         Stream dataStream = response.GetResponseStream();
-        StreamReader reader = new StreamReader(dataStream);
+        StreamReader reader = new(dataStream);
         string json_data = reader.ReadToEnd();
 
         // Close the streams and response
@@ -51,7 +51,7 @@ public class High_score : MonoBehaviour
         response.Close();
 
         // Parse the JSON data and extract the top scores
-        List<Dictionary<string, object>> top_scores = new List<Dictionary<string, object>>();
+        List<Dictionary<string, object>> top_scores = new();
         List<object> scores_list = MiniJSON.Json.Deserialize(json_data) as List<object>;
         foreach (object score in scores_list)
         {
@@ -68,29 +68,24 @@ public class High_score : MonoBehaviour
 
             if (index == 0)
             {
-                m_Score1.text ="1- "+ score["name"] + ": " + score["score"];
+                m_Score1.text = "1- " + score["name"] + ": " + score["score"];
             }
             else if (index == 1)
             {
-                m_Score2.text ="2- "+  score["name"] + ": " + score["score"];
+                m_Score2.text = "2- " + score["name"] + ": " + score["score"];
             }
             else if (index == 2)
             {
-                m_Score3.text ="3- "+  score["name"] + ": " + score["score"];
+                m_Score3.text = "3- " + score["name"] + ": " + score["score"];
             }
-      
-
-          
-    {
 
 
-         //   Debug.Log(fname + ": " + total_score);
+
+            {
+
+
+                //   Debug.Log(fname + ": " + total_score);
+            }
         }
-
-
     }
-
-
-
-}
 }

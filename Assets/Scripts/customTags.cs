@@ -10,34 +10,29 @@ public class customTags : MonoBehaviour
     private bool isBouncy = false;
     [SerializeField]
     private bool isSlidey = false;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    public void setSticky(bool v)
     {
-        
-    }
-
-    public void setSticky(bool v){
         isSticky = v;
     }
-    public bool getSticky(){
+    public bool getSticky()
+    {
         return isSticky;
     }
-    public void setBouncy(bool v){
+    public void setBouncy(bool v)
+    {
         isBouncy = v;
     }
-    public bool getBouncy(){
+    public bool getBouncy()
+    {
         return isBouncy;
     }
-    public void setSlidey(bool v){
+    public void setSlidey(bool v)
+    {
         isSlidey = v;
     }
-    public bool getSlidey(){
+    public bool getSlidey()
+    {
         return isSlidey;
     }
 }

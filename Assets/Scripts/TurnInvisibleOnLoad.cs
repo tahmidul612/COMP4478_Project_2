@@ -11,13 +11,7 @@ public class TurnInvisibleOnLoad : MonoBehaviour
     {
         currentMat = gameObject.GetComponent<Renderer>().material;
         Color oldColor = currentMat.color;
-        Color newColor = new Color(oldColor.r, oldColor.g, oldColor.b, 0.0f);
+        Color newColor = new(oldColor.r, oldColor.g, oldColor.b, 0.0f);
         currentMat.SetColor("_Color", newColor);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

@@ -21,18 +21,18 @@ public class ParallaxMovement : MonoBehaviour
     void Update()
     {
         float tempX = cameraObject.transform.position.x * (1 - speedX);
-        float distanceX = (cameraObject.transform.position.x * speedX);
+        float distanceX = cameraObject.transform.position.x * speedX;
 
         float tempY = cameraObject.transform.position.y * (1 - speedY);
-        float distanceY = (cameraObject.transform.position.y * speedY);
+        float distanceY = cameraObject.transform.position.y * speedY;
 
         transform.position = new Vector3(startPosX + distanceX, startPosY + distanceY, transform.position.z);
 
-        if(tempX > startPosX + length)
+        if (tempX > startPosX + length)
         {
             startPosX += length;
         }
-        else if(tempX < startPosX - length)
+        else if (tempX < startPosX - length)
         {
             startPosX -= length;
         }

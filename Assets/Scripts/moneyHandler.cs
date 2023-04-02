@@ -12,7 +12,8 @@ public class moneyHandler : MonoBehaviour
     public int maxCollected;
     private Tilemap tilemap;
 
-    void Start() {
+    void Start()
+    {
         self = GetComponent<TextMeshProUGUI>();
         tilemap = GameObject.Find("Coins").GetComponent<Tilemap>();
         maxCollected = 0;
@@ -22,19 +23,22 @@ public class moneyHandler : MonoBehaviour
         TileBase[] allTiles = tilemap.GetTilesBlock(bounds);
         // loop through all of the tiles        
         Debug.Log(allTiles);
-        for (int x = 0; x < bounds.size.x; x++) {
-            for (int y = 0; y < bounds.size.y; y++) {
+        for (int x = 0; x < bounds.size.x; x++)
+        {
+            for (int y = 0; y < bounds.size.y; y++)
+            {
                 TileBase tile = allTiles[x + y * bounds.size.x];
-                if (tile != null) {
+                if (tile != null)
+                {
                     maxCollected++;
                 }
             }
-        }  
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        self.text = "Money: $" + (moneyCollected*100);
+        self.text = "Money: $" + (moneyCollected * 100);
     }
 }

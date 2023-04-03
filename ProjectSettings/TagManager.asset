@@ -4,10 +4,14 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Wall
+  - Floor
+  - Pickup
   - CollisionMap
   - Background
   - Ground
-  - Wall
+  - Hazard
+  - NextLevelDoor
   layers:
   - Default
   - TransparentFX
@@ -17,7 +21,7 @@ TagManager:
   - UI
   - Collision
   - Background
-  - 
+  - Paused
   - 
   - 
   - 
@@ -59,4 +63,7 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 2629254947
+    locked: 0
+  - name: Paused
+    uniqueID: 412815127
     locked: 0

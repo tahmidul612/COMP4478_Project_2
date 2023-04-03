@@ -101,7 +101,7 @@ jobs:
         uses: montudor/action-zip@v1
         if: github.event.action == 'published' && matrix.targetPlatform == 'StandaloneWindows64'
         with:
-          args: zip -qq -r build/${{ matrix.targetPlatform }}.zip build/${{ matrix.targetPlatform }}/*
+          args: zip -qq -r build/${{ matrix.targetPlatform }}.zip build/${{ matrix.targetPlatform }}/
       - name: Upload Zip to GitHub Release
         uses: svenstaro/upload-release-action@v2
         if: github.event.action == 'published' && matrix.targetPlatform == 'StandaloneWindows64'

@@ -1,20 +1,22 @@
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Audio;
-using System.Linq;
 using UnityEngine.UI;
 
 public class SettingsController : MonoBehaviour
 {
     private static TMPro.TMP_Dropdown resolutionDropdown;
     private static TMPro.TMP_Dropdown displayDropdown;
-    private static Slider volumeSlider;
+    private Slider volumeSlider;
+    private Button resetNameButton;
+    private Button backButton;
     private static List<Resolution> resolutions;
     private static List<Display> displays;
     public static AudioMixer mainMixer;
-    public InputField uname;
+    private static InputField uname;
     private void Awake()
     {
         resolutionDropdown = transform.Find("Resolution/Dropdown").GetComponent<TMPro.TMP_Dropdown>();
@@ -22,6 +24,15 @@ public class SettingsController : MonoBehaviour
         mainMixer = Resources.Load<AudioMixer>("MainMixer");
         volumeSlider = transform.Find("Sound/Slider").GetComponent<Slider>();
         volumeSlider.onValueChanged.AddListener(delegate { SetVolume(volumeSlider.value); });
+        resetNameButton = transform.Find("Reset Name").GetComponent<Button>();
+        uname = transform.parent.Find("Start/uname").GetComponent<InputField>();
+        resetNameButton.onClick.AddListener(delegate { resetName(); });
+        backButton = transform.Find("Back Button").GetComponent<Button>();
+        backButton.onClick.AddListener(delegate { Back(); });
+    }
+    void Start()
+    {
+        OnEnable();
     }
     private void OnEnable()
     {
@@ -109,13 +120,19 @@ public class SettingsController : MonoBehaviour
         mainMixer.SetFloat("mainVolume", volume);
     }
 
+    private void Back()
+    {
+        gameObject.SetActive(false);
+        gameObject.transform.parent.GetChild(0).gameObject.SetActive(true);
+    }
 
 
-    public void resetName(){
+    private void resetName()
+    {
 
 
-    PlayerPrefs.DeleteKey("username");
-    uname.gameObject.SetActive(true);
+        PlayerPrefs.DeleteKey("username");
+        uname.gameObject.SetActive(true);
     }
 
 }

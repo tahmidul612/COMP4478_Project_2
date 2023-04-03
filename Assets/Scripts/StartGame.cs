@@ -6,54 +6,66 @@ using UnityEngine.UI;
 
 public class StartGame : MonoBehaviour
 {
-    public InputField uname;
+    [SerializeField] private InputField uname;
+    [SerializeField] private Button startButton;
+    [SerializeField] private Button highScoresButton;
+    [SerializeField] private Button settingsButton;
+    [SerializeField] private Button quitButton;
     public string userName;
 
     void Start()
     {
-       
         // Retrieve the saved username from PlayerPrefs
         userName = PlayerPrefs.GetString("username");
-        
         // Hide the input field if the saved username is not null or empty
         if (!string.IsNullOrEmpty(userName))
         {
             uname.gameObject.SetActive(false);
         }
+        startButton.onClick.AddListener(delegate { StartGameButton(); });
+        highScoresButton.onClick.AddListener(delegate { HighScores(); });
+        settingsButton.onClick.AddListener(delegate { SettingsMenu(); });
+        quitButton.onClick.AddListener(delegate { Application.Quit(); });
     }
-public void HighScores()
+
+    public void SettingsMenu()
+    {
+        this.gameObject.SetActive(false);
+        transform.parent.Find("Settings").gameObject.SetActive(true);
+    }
+
+    public void HighScores()
     {
 
-SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+        SceneManager.LoadScene("High_scores");
 
     }
-
 
     public void StartGameButton()
     {
-      if (uname.gameObject.activeSelf)
-{
-        userName = uname.text;
-        
-        // if the input field is empty, flash and do nothing
-        if (string.IsNullOrEmpty(userName))
+        if (uname.gameObject.activeSelf)
         {
-            FlashInputField(uname, 0.5f);
-            Debug.Log(userName);
+            userName = uname.text;
+
+            // if the input field is empty, flash and do nothing
+            if (string.IsNullOrEmpty(userName))
+            {
+                FlashInputField(uname, 0.5f);
+                Debug.Log(userName);
+            }
+            else
+            {
+                // Save the username
+                PlayerPrefs.SetString("username", userName);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
         }
+
         else
         {
             // Save the username
             PlayerPrefs.SetString("username", userName);
-             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        }
-    }
-
-      else
-        {
-            // Save the username
-            PlayerPrefs.SetString("username", userName);
-             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 

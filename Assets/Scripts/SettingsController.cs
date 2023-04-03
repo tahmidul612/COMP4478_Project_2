@@ -1,7 +1,7 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Audio;
-using System.Linq;
 
 public class SettingsController : MonoBehaviour
 {
@@ -13,7 +13,14 @@ public class SettingsController : MonoBehaviour
     private void Start()
     {
         setupResolutions();
-        setupDisplays();
+        if (Application.platform == RuntimePlatform.WebGLPlayer)
+        {
+            displayDropdown.transform.parent.gameObject.SetActive(false);
+        }
+        else
+        {
+            setupDisplays();
+        }
     }
 
     private void setupDisplays()
@@ -52,7 +59,8 @@ public class SettingsController : MonoBehaviour
             currentResolution
             });
         }
-        else {
+        else
+        {
             resolutions.Add(currentResolution);
         }
         resolutions = resolutions.Distinct().ToList();

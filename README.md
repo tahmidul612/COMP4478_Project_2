@@ -7,6 +7,11 @@
 |            Austin Hart | Tahmidul Islam |
 
 ---
+
+![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/tahmidul612/COMP4478_Project_2?include_prereleases&style=for-the-badge)
+![GitHub release (latest by SemVer and asset including pre-releases)](https://img.shields.io/github/downloads-pre/tahmidul612/COMP4478_Project_2/latest/StandaloneWindows64.zip?sort=semver&style=for-the-badge)
+![Website](https://img.shields.io/website?label=Play%20Online&style=for-the-badge&url=https%3A%2F%2Ftahmidul612.github.io%2FCOMP4478_Project_2%2F)
+
 ## Play in Browser
 
 https://tahmidul612.github.io/COMP4478_Project_2/

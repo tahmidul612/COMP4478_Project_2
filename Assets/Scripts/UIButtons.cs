@@ -4,17 +4,12 @@ using UnityEngine.UI;
 
 public class UIButtons : MonoBehaviour
 {
-    [SerializeField] private GameObject cornerButtonsPanel;
     public static bool isPaused = false;
     private void Start()
     {
-        // Fullscreen button
-        Button fullScreenButton = cornerButtonsPanel.transform.Find("Fullscreen").GetComponent<Button>();
-        fullScreenIcon(fullScreenButton, Screen.fullScreen);
-        fullScreenButton.onClick.AddListener(delegate { SetFullScreen(fullScreenButton, Screen.fullScreen); });
-        
+        FullscreenController.fullScreenIcon(Screen.fullScreen);
         // Pause button
-        Button pauseButton = cornerButtonsPanel.transform.Find("Pause").GetComponent<Button>();
+        Button pauseButton = transform.Find("Pause").GetComponent<Button>();
         if (SceneManager.GetActiveScene().name.Contains("Level"))
         {
             pauseButton.gameObject.SetActive(true);
@@ -24,18 +19,6 @@ public class UIButtons : MonoBehaviour
         {
             pauseButton.gameObject.SetActive(false);
         }
-    }
-    private void SetFullScreen(Button button, bool isFullscreen)
-    {
-        Screen.fullScreen = !isFullscreen;
-        fullScreenIcon(button, !isFullscreen);
-    }
-    private void fullScreenIcon(Button button, bool value)
-    {
-        // larger
-        button.transform.GetChild(0).GetComponent<Image>().enabled = !value;
-        // smaller
-        button.transform.GetChild(1).GetComponent<Image>().enabled = value;
     }
     private void PauseGame()
     {

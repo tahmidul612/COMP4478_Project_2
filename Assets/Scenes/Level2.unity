@@ -345,6 +345,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CrusherHazard
       objectReference: {fileID: 0}
+    - target: {fileID: 4416046080998445555, guid: 9c461efae2c03554c91eacf61d1829aa, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4416046080998445567, guid: 9c461efae2c03554c91eacf61d1829aa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -748,11 +752,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8695198491174724206, guid: a5ab50040d731634f9b292b4dfaea3e5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.53
+      value: 46.44
       objectReference: {fileID: 0}
     - target: {fileID: 8695198491174724206, guid: a5ab50040d731634f9b292b4dfaea3e5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.33
+      value: -13.23
       objectReference: {fileID: 0}
     - target: {fileID: 8695198491174724206, guid: a5ab50040d731634f9b292b4dfaea3e5, type: 3}
       propertyPath: m_LocalPosition.z

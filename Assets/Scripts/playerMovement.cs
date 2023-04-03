@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 
 public class playerMovement : MonoBehaviour
@@ -17,7 +18,7 @@ public class playerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();    
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -26,10 +27,12 @@ public class playerMovement : MonoBehaviour
         float xMove = Input.GetAxisRaw("Horizontal"); // d key changes value to 1, a key changes value to -1
         float yMove = Input.GetAxisRaw("Vertical"); // w key changes value to 1, s key changes value to -1
 
-        if(xMove != 0){
+        if (xMove != 0)
+        {
             lastXMove = xMove;
         }
-        if(yMove != 0){
+        if (yMove != 0)
+        {
             lastYMove = yMove;
         }
 
@@ -37,33 +40,50 @@ public class playerMovement : MonoBehaviour
         rb.AddForce(force);
 
         Vector3 clampVel = rb.velocity;
-        clampVel.x =  Mathf.Clamp(clampVel.x,-10f, 10f);
+        clampVel.x = Mathf.Clamp(clampVel.x, -10f, 10f);
         rb.velocity = clampVel;
 
         Vector3 clampVelDown = rb.velocity;
-        clampVelDown.y =  Mathf.Clamp(clampVel.y,-10f, 10f);
+        clampVelDown.y = Mathf.Clamp(clampVel.y, -10f, 10f);
         rb.velocity = clampVelDown;
     }
 
-    void OnCollisionStay2D(Collision2D coll){
-        
-        if(Input.GetAxisRaw("Vertical") == 1){
-            if (coll.gameObject.tag == "Ground" || coll.gameObject.name == "Tilemap"){
+    void OnCollisionStay2D(Collision2D coll)
+    {
+
+        if (Input.GetAxisRaw("Vertical") == 1)
+        {
+            if (coll.gameObject.tag == "Ground" || coll.gameObject.name == "Tilemap")
+            {
                 playerJump(coll, 0, jump);
             }
-            if (coll.gameObject.tag == "Wall"){
-                Debug.Log(lastXMove * -1 * (speed/2));
-                playerJump(coll, lastXMove * -1 * (speed/2), jump);
+            if (coll.gameObject.tag == "Wall")
+            {
+                Debug.Log(lastXMove * -1 * (speed / 2));
+                playerJump(coll, lastXMove * -1 * (speed / 2), jump);
             }
         }
     }
 
-    void playerJump(Collision2D coll, float x, float yMod){
-        float height = yMod;
-        if(coll.gameObject.GetComponent<customTags>().getBouncy()){
-            height = (float) (yMod * 1.5);
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "NextLevelDoor")
+        {
+            if (Input.GetAxisRaw("Vertical") == 1)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
         }
-        jumpHeight = new Vector2(x,height);
+    }
+
+    void playerJump(Collision2D coll, float x, float yMod)
+    {
+        float height = yMod;
+        if (coll.gameObject.GetComponent<customTags>().getBouncy())
+        {
+            height = (float)(yMod * 1.5);
+        }
+        jumpHeight = new Vector2(x, height);
         float yMove = Input.GetAxisRaw("Vertical"); // w key changes value to 1, s key changes value to -1
         rb.AddForce(jumpHeight * yMove, ForceMode2D.Impulse);
     }

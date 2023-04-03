@@ -344,21 +344,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 502778188}
     m_Modifications:
-    - target: {fileID: 3801964497340555805, guid: 75a750bfd13bb884899c93913cd007db, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3801964497601077816, guid: 75a750bfd13bb884899c93913cd007db, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3801964497754214517, guid: 75a750bfd13bb884899c93913cd007db, type: 3}
       propertyPath: m_Name
       value: SawHazard
-      objectReference: {fileID: 0}
-    - target: {fileID: 3801964497754214517, guid: 75a750bfd13bb884899c93913cd007db, type: 3}
-      propertyPath: m_Layer
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3801964497754214518, guid: 75a750bfd13bb884899c93913cd007db, type: 3}
       propertyPath: m_RootOrder
@@ -402,18 +390,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3801964497754214518, guid: 75a750bfd13bb884899c93913cd007db, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3801964498338697317, guid: 75a750bfd13bb884899c93913cd007db, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3801964499110392690, guid: 75a750bfd13bb884899c93913cd007db, type: 3}
-      propertyPath: checkpointLayer.m_Bits
-      value: 256
-      objectReference: {fileID: 0}
-    - target: {fileID: 3801964499110392694, guid: 75a750bfd13bb884899c93913cd007db, type: 3}
-      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -796,22 +772,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CrusherHazard
       objectReference: {fileID: 0}
-    - target: {fileID: 4416046080244182579, guid: 9c461efae2c03554c91eacf61d1829aa, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4416046080776601465, guid: 9c461efae2c03554c91eacf61d1829aa, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4416046080998445564, guid: 9c461efae2c03554c91eacf61d1829aa, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4416046080998445566, guid: 9c461efae2c03554c91eacf61d1829aa, type: 3}
-      propertyPath: ceilingLayer.m_Bits
-      value: 256
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c461efae2c03554c91eacf61d1829aa, type: 3}
 --- !u!1001 &1497908108
@@ -843,11 +803,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8695198491174724206, guid: a5ab50040d731634f9b292b4dfaea3e5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 35.39
+      value: -3.45
       objectReference: {fileID: 0}
     - target: {fileID: 8695198491174724206, guid: a5ab50040d731634f9b292b4dfaea3e5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.83
+      value: -3.17
       objectReference: {fileID: 0}
     - target: {fileID: 8695198491174724206, guid: a5ab50040d731634f9b292b4dfaea3e5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2716,30 +2676,6 @@ PrefabInstance:
     - target: {fileID: 1614875046737583963, guid: 35a8866eaa019c8439c747b391903111, type: 3}
       propertyPath: m_Name
       value: WallSaw
-      objectReference: {fileID: 0}
-    - target: {fileID: 1614875046737583963, guid: 35a8866eaa019c8439c747b391903111, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1614875047514253739, guid: 35a8866eaa019c8439c747b391903111, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1614875048040953951, guid: 35a8866eaa019c8439c747b391903111, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1614875048139511277, guid: 35a8866eaa019c8439c747b391903111, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1614875048560006948, guid: 35a8866eaa019c8439c747b391903111, type: 3}
-      propertyPath: checkpointLayer.m_Bits
-      value: 256
-      objectReference: {fileID: 0}
-    - target: {fileID: 1614875048560006954, guid: 35a8866eaa019c8439c747b391903111, type: 3}
-      propertyPath: m_Layer
-      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35a8866eaa019c8439c747b391903111, type: 3}

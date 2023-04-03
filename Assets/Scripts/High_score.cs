@@ -1,39 +1,32 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using TMPro;
-using UnityEngine.SceneManagement;
 using System.IO;
-using UnityEngine.UI;
-using UnityEngine.Networking;
 using System.Net;
-using System;
+using TMPro;
+using UnityEngine;
+using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class High_score : MonoBehaviour
 {
 
 
-  public Text m_Score1;
-  public Text m_Score2;
-  public Text m_Score3;
+    public Text m_Score1;
+    public Text m_Score2;
+    public Text m_Score3;
+    [SerializeField] private Button backbutton;
 
-
-
-
-
-
-
-
-  public void backtomenu()
+    public void Back()
     {
-
- SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("StartMenu");
     }
-
 
     // Start is called before the first frame update
     void Start()
     {
+        backbutton.onClick.AddListener(delegate { Back(); });
         // Create a web request to retrieve the JSON data
         HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://advgamin.000webhostapp.com/ASSIGN2/highscores.php");
         request.ContentType = "application/json";
@@ -68,29 +61,16 @@ public class High_score : MonoBehaviour
 
             if (index == 0)
             {
-                m_Score1.text ="1- "+ score["name"] + ": " + score["score"];
+                m_Score1.text = "1- " + score["name"] + ": " + score["score"];
             }
             else if (index == 1)
             {
-                m_Score2.text ="2- "+  score["name"] + ": " + score["score"];
+                m_Score2.text = "2- " + score["name"] + ": " + score["score"];
             }
             else if (index == 2)
             {
-                m_Score3.text ="3- "+  score["name"] + ": " + score["score"];
+                m_Score3.text = "3- " + score["name"] + ": " + score["score"];
             }
-      
-
-          
-    {
-
-
-         //   Debug.Log(fname + ": " + total_score);
         }
-
-
     }
-
-
-
-}
 }

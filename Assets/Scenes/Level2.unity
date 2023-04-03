@@ -338,7 +338,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3801964497340555805, guid: 75a750bfd13bb884899c93913cd007db, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3801964497601077816, guid: 75a750bfd13bb884899c93913cd007db, type: 3}
       propertyPath: m_Layer
@@ -398,11 +398,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3801964498338697317, guid: 75a750bfd13bb884899c93913cd007db, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3801964499110392690, guid: 75a750bfd13bb884899c93913cd007db, type: 3}
       propertyPath: checkpointLayer.m_Bits
-      value: 256
+      value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 3801964499110392694, guid: 75a750bfd13bb884899c93913cd007db, type: 3}
       propertyPath: m_Layer
@@ -5573,11 +5573,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4416046080776601465, guid: 9c461efae2c03554c91eacf61d1829aa, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4416046080998445564, guid: 9c461efae2c03554c91eacf61d1829aa, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4416046080998445566, guid: 9c461efae2c03554c91eacf61d1829aa, type: 3}
+      propertyPath: ceilingLayer.m_Bits
+      value: 128
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c461efae2c03554c91eacf61d1829aa, type: 3}
@@ -5610,11 +5614,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8695198491174724206, guid: a5ab50040d731634f9b292b4dfaea3e5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.05
+      value: 35.08
       objectReference: {fileID: 0}
     - target: {fileID: 8695198491174724206, guid: a5ab50040d731634f9b292b4dfaea3e5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.48
+      value: -13.4
       objectReference: {fileID: 0}
     - target: {fileID: 8695198491174724206, guid: a5ab50040d731634f9b292b4dfaea3e5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5738,7 +5742,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1614875047514253739, guid: 35a8866eaa019c8439c747b391903111, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1614875048040953944, guid: 35a8866eaa019c8439c747b391903111, type: 3}
       propertyPath: m_IsTrigger
@@ -5754,11 +5758,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1614875048040953951, guid: 35a8866eaa019c8439c747b391903111, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1614875048139511277, guid: 35a8866eaa019c8439c747b391903111, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1614875048560006948, guid: 35a8866eaa019c8439c747b391903111, type: 3}
+      propertyPath: checkpointLayer.m_Bits
+      value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 1614875048560006949, guid: 35a8866eaa019c8439c747b391903111, type: 3}
       propertyPath: m_LocalScale.x
@@ -5860,7 +5868,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1614875047514253739, guid: 35a8866eaa019c8439c747b391903111, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1614875048040953944, guid: 35a8866eaa019c8439c747b391903111, type: 3}
       propertyPath: m_IsTrigger
@@ -5872,11 +5880,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1614875048040953951, guid: 35a8866eaa019c8439c747b391903111, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1614875048139511277, guid: 35a8866eaa019c8439c747b391903111, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1614875048560006948, guid: 35a8866eaa019c8439c747b391903111, type: 3}
+      propertyPath: checkpointLayer.m_Bits
+      value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 1614875048560006949, guid: 35a8866eaa019c8439c747b391903111, type: 3}
       propertyPath: m_LocalScale.x
@@ -5900,7 +5912,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1614875048560006954, guid: 35a8866eaa019c8439c747b391903111, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35a8866eaa019c8439c747b391903111, type: 3}
@@ -6033,15 +6045,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1614875047514253739, guid: 35a8866eaa019c8439c747b391903111, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1614875048040953951, guid: 35a8866eaa019c8439c747b391903111, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1614875048139511277, guid: 35a8866eaa019c8439c747b391903111, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1614875048560006948, guid: 35a8866eaa019c8439c747b391903111, type: 3}
+      propertyPath: checkpointLayer.m_Bits
+      value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 1614875048560006954, guid: 35a8866eaa019c8439c747b391903111, type: 3}
       propertyPath: m_Layer

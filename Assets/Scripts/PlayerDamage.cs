@@ -17,7 +17,7 @@ public class PlayerDamage : MonoBehaviour
         if (collision.gameObject.tag == "Hazard")
         {
             thisScene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(thisScene.buildIndex);
+            SceneManager.LoadSceneAsync(thisScene.buildIndex);
         }
     }
 }

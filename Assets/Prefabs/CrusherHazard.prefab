@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 4416046080776601464}
   - component: {fileID: 4416046080776601466}
   - component: {fileID: 4416046080776601467}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Ceiling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 4416046080998445552}
   - component: {fileID: 4416046080998445553}
   - component: {fileID: 4416046080998445566}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Crusher
   m_TagString: Hazard
   m_Icon: {fileID: 0}
@@ -293,7 +293,7 @@ MonoBehaviour:
   rb: {fileID: 4416046080998445553}
   ceilingLayer:
     serializedVersion: 2
-    m_Bits: 384
+    m_Bits: 256
   groundLayer:
     serializedVersion: 2
     m_Bits: 64

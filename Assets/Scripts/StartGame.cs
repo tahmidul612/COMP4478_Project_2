@@ -15,57 +15,65 @@ public class StartGame : MonoBehaviour
 
     void Start()
     {
-        // Retrieve the saved username from PlayerPrefs
-        userName = PlayerPrefs.GetString("username");
-        // Hide the input field if the saved username is not null or empty
-        if (!string.IsNullOrEmpty(userName))
+        if (SceneManager.GetActiveScene().name != "EndMenu")
         {
-            uname.gameObject.SetActive(false);
+            // Retrieve the saved username from PlayerPrefs
+            userName = PlayerPrefs.GetString("username");
+            // Hide the input field if the saved username is not null or empty
+            if (!string.IsNullOrEmpty(userName))
+            {
+                uname.gameObject.SetActive(false);
+            }
+            settingsButton.onClick.AddListener(delegate { SettingsMenu(); });
         }
         startButton.onClick.AddListener(delegate { StartGameButton(); });
         highScoresButton.onClick.AddListener(delegate { HighScores(); });
-        settingsButton.onClick.AddListener(delegate { SettingsMenu(); });
         quitButton.onClick.AddListener(delegate { Application.Quit(); });
     }
 
     public void SettingsMenu()
     {
-        this.gameObject.SetActive(false);
+        gameObject.SetActive(false);
         transform.parent.Find("Settings").gameObject.SetActive(true);
     }
 
     public void HighScores()
     {
-
-        SceneManager.LoadScene("High_scores");
+        SceneManager.LoadSceneAsync("High_scores");
 
     }
 
     public void StartGameButton()
     {
-        if (uname.gameObject.activeSelf)
+        if (SceneManager.GetActiveScene().name == "EndMenu")
         {
-            userName = uname.text;
-
-            // if the input field is empty, flash and do nothing
-            if (string.IsNullOrEmpty(userName))
+            SceneManager.LoadSceneAsync("StartMenu");
+        }
+        else
+        {
+            if (uname.gameObject.activeSelf)
             {
-                FlashInputField(uname, 0.5f);
-                Debug.Log(userName);
+                userName = uname.text;
+
+                // if the input field is empty, flash and do nothing
+                if (string.IsNullOrEmpty(userName))
+                {
+                    FlashInputField(uname, 0.5f);
+                    Debug.Log(userName);
+                }
+                else
+                {
+                    // Save the username
+                    PlayerPrefs.SetString("username", userName);
+                    SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+                }
             }
             else
             {
                 // Save the username
                 PlayerPrefs.SetString("username", userName);
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
             }
-        }
-
-        else
-        {
-            // Save the username
-            PlayerPrefs.SetString("username", userName);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 

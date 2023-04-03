@@ -25,7 +25,7 @@ public class SettingsController : MonoBehaviour
         volumeSlider = transform.Find("Sound/Slider").GetComponent<Slider>();
         volumeSlider.onValueChanged.AddListener(delegate { SetVolume(volumeSlider.value); });
         resetNameButton = transform.Find("Reset Name").GetComponent<Button>();
-        uname = transform.parent.Find("Start/uname").GetComponent<InputField>();
+        uname = transform.parent.Find("MainMenu/uname").GetComponent<InputField>();
         resetNameButton.onClick.AddListener(delegate { resetName(); });
         backButton = transform.Find("Back Button").GetComponent<Button>();
         backButton.onClick.AddListener(delegate { Back(); });

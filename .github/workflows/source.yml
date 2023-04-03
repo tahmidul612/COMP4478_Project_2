@@ -1,0 +1,36 @@
+name: Source Code
+on:
+  # run on push to main branch that changes given paths
+  push:
+    branches:
+      - main
+    paths:
+      - 'Assets/**'
+      - 'Packages/**'
+      - 'ProjectSettings/**'
+  # enable manual run
+  workflow_dispatch:
+      
+jobs:
+  upload:
+    name: Create source code zip
+    runs-on: ubuntu-latest
+    steps:
+      # checkout repo with lfs
+      - name: Checkout
+        uses: actions/checkout@v2.7.0
+        with:
+          # Number of commits to fetch. 0 indicates all history for all branches and tags.
+          fetch-depth: 1
+          lfs: true
+      - name: Git LFS Pull
+        run: |
+          git lfs pull
+          git add .
+          git reset --hard
+      # uploads the source code as an artifact
+      - name: Upload Source Code
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          name: Source code
+          path: ${{ github.workspace }}

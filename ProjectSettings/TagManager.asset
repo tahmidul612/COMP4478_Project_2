@@ -10,6 +10,8 @@ TagManager:
   - CollisionMap
   - Background
   - Ground
+  - Hazard
+  - NextLevelDoor
   layers:
   - Default
   - TransparentFX

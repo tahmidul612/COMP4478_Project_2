@@ -9,7 +9,10 @@ public class SetHelpText : MonoBehaviour
         if (other.name == "Player")
         {
             GeneratePopup.Instance.showHelpText(generateHelpText());
-            this.GetComponent<BoxCollider2D>().enabled = false;
+            if (this.name != "NextLevel")
+            {
+                this.GetComponent<BoxCollider2D>().enabled = false;
+            }
         }
     }
     private string generateHelpText()
@@ -20,6 +23,7 @@ public class SetHelpText : MonoBehaviour
             "Spike" => "Watch out for the spikes! They're sharp",
             "Sticky" => "You can stick to the walls with the sticky slime",
             "Bouncy" => "You can bounce off the bouncy slime",
+            "NextLevel" => "Jump to go through the portal to the next level",
             _ => ""
         };
     }

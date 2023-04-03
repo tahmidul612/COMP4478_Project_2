@@ -1,16 +1,27 @@
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class SettingsController : MonoBehaviour
 {
-    [SerializeField] private TMPro.TMP_Dropdown resolutionDropdown;
-    [SerializeField] private TMPro.TMP_Dropdown displayDropdown;
-    private List<Resolution> resolutions;
-    private List<Display> displays;
-    [SerializeField] private AudioMixer mainMixer;
-    private void Start()
+    private static TMPro.TMP_Dropdown resolutionDropdown;
+    private static TMPro.TMP_Dropdown displayDropdown;
+    private static Slider volumeSlider;
+    private static List<Resolution> resolutions;
+    private static List<Display> displays;
+    public static AudioMixer mainMixer;
+    private void Awake()
+    {
+        resolutionDropdown = transform.Find("Resolution/Dropdown").GetComponent<TMPro.TMP_Dropdown>();
+        displayDropdown = transform.Find("Display/Dropdown").GetComponent<TMPro.TMP_Dropdown>();
+        mainMixer = Resources.Load<AudioMixer>("MainMixer");
+        volumeSlider = transform.Find("Sound/Slider").GetComponent<Slider>();
+        volumeSlider.onValueChanged.AddListener(delegate { SetVolume(volumeSlider.value); });
+    }
+    private void OnEnable()
     {
         setupResolutions();
         if (Application.platform == RuntimePlatform.WebGLPlayer)
@@ -36,14 +47,19 @@ public class SettingsController : MonoBehaviour
         displayDropdown.RefreshShownValue();
     }
 
-    private void setupResolutions()
+    public static void setupResolutions()
     {
-        // populate Resolution[] list with 3 resolutions (360p, 720p and 1080p)
         int currentRefreshRate = Screen.currentResolution.refreshRate;
-        Resolution currentResolution = new Resolution
+        Resolution currentResolution = new()
         {
             width = Screen.width,
             height = Screen.height,
+            refreshRate = currentRefreshRate
+        };
+        Resolution maxResolution = new()
+        {
+            width = Display.main.systemWidth,
+            height = Display.main.systemHeight,
             refreshRate = currentRefreshRate
         };
         resolutions = new List<Resolution>();
@@ -56,7 +72,8 @@ public class SettingsController : MonoBehaviour
             new Resolution {width = 1920, height = 1080, refreshRate = currentRefreshRate},
             new Resolution {width = 2560, height = 1440, refreshRate = currentRefreshRate},
             new Resolution {width = 3840, height = 2160, refreshRate = currentRefreshRate},
-            currentResolution
+            currentResolution,
+            maxResolution
             });
         }
         else
@@ -65,7 +82,8 @@ public class SettingsController : MonoBehaviour
         }
         resolutions = resolutions.Distinct().ToList();
         resolutions = resolutions.OrderBy(res => res.width).ToList();
-        // Add all resolutions to the dropdown
+        resolutions = resolutions.GetRange(0, resolutions.IndexOf(maxResolution) + 1);
+
         resolutionDropdown.ClearOptions();
         resolutionDropdown.AddOptions(resolutions.Select(res => res.ToString()).ToList());
         resolutionDropdown.value = resolutions.IndexOf(currentResolution);
@@ -73,13 +91,13 @@ public class SettingsController : MonoBehaviour
         resolutionDropdown.onValueChanged.AddListener(delegate { SetResolution(resolutionDropdown.value); });
     }
 
-    private void SetDisplay(int displayIndex)
+    private static void SetDisplay(int displayIndex)
     {
         // PlayerPrefs.SetInt("UnitySelectMonitor", displayIndex);
     }
 
     // Set volume
-    private void SetResolution(int resolutionIndex)
+    private static void SetResolution(int resolutionIndex)
     {
         Resolution resolution = resolutions[resolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);

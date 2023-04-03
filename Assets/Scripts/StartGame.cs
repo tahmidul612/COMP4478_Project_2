@@ -39,7 +39,7 @@ public class StartGame : MonoBehaviour
 
     public void HighScores()
     {
-        SceneManager.LoadScene("High_scores");
+        SceneManager.LoadSceneAsync("High_scores");
 
     }
 
@@ -47,7 +47,7 @@ public class StartGame : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "EndMenu")
         {
-            SceneManager.LoadScene("StartMenu");
+            SceneManager.LoadSceneAsync("StartMenu");
         }
         else
         {
@@ -65,14 +65,14 @@ public class StartGame : MonoBehaviour
                 {
                     // Save the username
                     PlayerPrefs.SetString("username", userName);
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                    SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
                 }
             }
             else
             {
                 // Save the username
                 PlayerPrefs.SetString("username", userName);
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
             }
         }
     }

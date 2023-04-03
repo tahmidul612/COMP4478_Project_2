@@ -21,7 +21,7 @@ public class High_score : MonoBehaviour
 
     public void MainMenu()
     {
-        SceneManager.LoadScene("StartMenu");
+        SceneManager.LoadSceneAsync("StartMenu");
     }
 
     // Start is called before the first frame update

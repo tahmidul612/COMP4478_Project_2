@@ -85,7 +85,7 @@ public class playerMovement : MonoBehaviour
         {
             if (Input.GetAxisRaw("Vertical") == 1)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
                 addScore(uname, 113);
             }
         }

@@ -16,9 +16,10 @@ public class High_score : MonoBehaviour
     public Text m_Score1;
     public Text m_Score2;
     public Text m_Score3;
-    [SerializeField] private Button backbutton;
+    [SerializeField] private Button MainMenuButton;
+    [SerializeField] private Button QuitButton;
 
-    public void Back()
+    public void MainMenu()
     {
         SceneManager.LoadScene("StartMenu");
     }
@@ -26,7 +27,8 @@ public class High_score : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        backbutton.onClick.AddListener(delegate { Back(); });
+        MainMenuButton.onClick.AddListener(delegate { MainMenu(); });
+        QuitButton.onClick.AddListener(delegate { Application.Quit(); });
         // Create a web request to retrieve the JSON data
         HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://advgamin.000webhostapp.com/ASSIGN2/highscores.php");
         request.ContentType = "application/json";

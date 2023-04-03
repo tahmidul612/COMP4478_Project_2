@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SettingsController : MonoBehaviour
@@ -16,7 +17,7 @@ public class SettingsController : MonoBehaviour
     private static List<Resolution> resolutions;
     private static List<Display> displays;
     public static AudioMixer mainMixer;
-    private static InputField uname;
+    private InputField uname;
     private void Awake()
     {
         resolutionDropdown = transform.Find("Resolution/Dropdown").GetComponent<TMPro.TMP_Dropdown>();
@@ -24,9 +25,16 @@ public class SettingsController : MonoBehaviour
         mainMixer = Resources.Load<AudioMixer>("MainMixer");
         volumeSlider = transform.Find("Sound/Slider").GetComponent<Slider>();
         volumeSlider.onValueChanged.AddListener(delegate { SetVolume(volumeSlider.value); });
-        resetNameButton = transform.Find("Reset Name").GetComponent<Button>();
-        uname = transform.parent.Find("MainMenu/uname").GetComponent<InputField>();
-        resetNameButton.onClick.AddListener(delegate { resetName(); });
+        if (SceneManager.GetActiveScene().name == "StartMenu")
+        {
+            resetNameButton = transform.Find("Reset Name").GetComponent<Button>();
+            uname = transform.parent.Find("MainMenu/uname").GetComponent<InputField>();
+            resetNameButton.onClick.AddListener(delegate { resetName(); });
+        }
+        else
+        {
+            transform.parent.Find("MainMenu/uname").gameObject.SetActive(false);
+        }
         backButton = transform.Find("Back Button").GetComponent<Button>();
         backButton.onClick.AddListener(delegate { Back(); });
     }

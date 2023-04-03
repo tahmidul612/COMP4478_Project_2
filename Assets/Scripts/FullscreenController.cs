@@ -15,6 +15,10 @@ public class FullscreenController : MonoBehaviour
         bool isFullscreen = Screen.fullScreen;
         Screen.fullScreen = !isFullscreen;
         fullScreenIcon(!isFullscreen);
+        if (GameObject.Find("SettingsMenu").activeSelf)
+        {
+            SettingsController.setupResolutions();
+        }
     }
     public static void fullScreenIcon(bool value)
     {

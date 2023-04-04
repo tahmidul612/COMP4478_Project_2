@@ -11,20 +11,15 @@ public class SettingsController : MonoBehaviour
 {
     public static TMPro.TMP_Dropdown resolutionDropdown;
     private static TMPro.TMP_Dropdown displayDropdown;
-    private Slider volumeSlider;
     private Button resetNameButton;
     private Button backButton;
     public static List<Resolution> resolutions;
     private static List<Display> displays;
-    public static AudioMixer mainMixer;
     private InputField uname;
     private void Awake()
     {
         resolutionDropdown = transform.Find("Resolution/Dropdown").GetComponent<TMPro.TMP_Dropdown>();
         displayDropdown = transform.Find("Display/Dropdown").GetComponent<TMPro.TMP_Dropdown>();
-        mainMixer = Resources.Load<AudioMixer>("MainMixer");
-        volumeSlider = transform.Find("Sound/Slider").GetComponent<Slider>();
-        volumeSlider.onValueChanged.AddListener(delegate { SetVolume(volumeSlider.value); });
         if (SceneManager.GetActiveScene().name == "StartMenu")
         {
             resetNameButton = transform.Find("Reset Name").GetComponent<Button>();
@@ -122,10 +117,6 @@ public class SettingsController : MonoBehaviour
     {
         Resolution resolution = resolutions[resolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
-    }
-    public void SetVolume(float volume)
-    {
-        mainMixer.SetFloat("mainVolume", volume);
     }
 
     private void Back()

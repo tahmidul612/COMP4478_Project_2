@@ -26,8 +26,8 @@ public class StartGame : MonoBehaviour
             }
             settingsButton.onClick.AddListener(delegate { SettingsMenu(); });
         }
-        startButton.onClick.AddListener(delegate { StartGameButton(); });
         highScoresButton.onClick.AddListener(delegate { HighScores(); });
+        startButton.onClick.AddListener(delegate { StartGameButton(); });
         quitButton.onClick.AddListener(delegate { Application.Quit(); });
     }
 

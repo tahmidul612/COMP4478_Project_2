@@ -1,26 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class FullscreenController : MonoBehaviour
 {
     public static Button button;
-    void Awake()
+    public bool isFullScreen;
+    void Start()
     {
         button = GetComponent<Button>();
+        isFullScreen = Screen.fullScreen;
+        FullScreenIcon(isFullScreen);
+        button.onClick.AddListener(delegate { ToggleFullScreen(); });
     }
     public void ToggleFullScreen()
     {
-        bool isFullscreen = Screen.fullScreen;
-        Screen.fullScreen = !isFullscreen;
-        fullScreenIcon(!isFullscreen);
-        if (GameObject.Find("SettingsMenu").activeSelf)
-        {
-            SettingsController.setupResolutions();
-        }
+        isFullScreen = !Screen.fullScreen;
+        Screen.fullScreen = isFullScreen;
+        FullScreenIcon(isFullScreen);
+        // GameObject settings = GameObject.Find("Settings");
+        // if (settings != null && settings.activeSelf)
+        // {
+        //     SettingsController.SetupResolutions();
+        // }
     }
-    public static void fullScreenIcon(bool value)
+    public static void FullScreenIcon(bool value)
     {
         // larger
         button.transform.GetChild(0).GetComponent<Image>().enabled = !value;

@@ -20,14 +20,20 @@ public class playerMovement : MonoBehaviour
     public Material gift; // The material to apply to the particle system
     public Material snow;
     private ParticleSystemRenderer particleSystemRenderer; // The renderer for the particle system
-    public int onoff_value = 3;
-    private float updateInterval = 2.0f; // The update interval in seconds
+    public int onoff_value = 0;
+    private float updateInterval = 3.0f; // The update interval in seconds
     public string uname;
+    public CoinHandler moneyHandlerInstance;
+    public int score = 0;
+
+    private float startTime;
 
     // Start is called before the first frame update
     void Start()
     {
 
+        moneyHandlerInstance = FindObjectOfType<CoinHandler>();
+        startTime = Time.time;
         uname = PlayerPrefs.GetString("username");
         // Call MyUpdateFunction every updateInterval seconds, starting from 0 seconds
         InvokeRepeating("MyUpdateFunction", 0.0f, updateInterval);
@@ -85,8 +91,31 @@ public class playerMovement : MonoBehaviour
         {
             if (Input.GetAxisRaw("Vertical") == 1)
             {
+                int level = SceneManager.GetActiveScene().buildIndex;
+
+                if (level == 1)
+                {
+                    float timeTaken = Time.time - startTime;
+                    int CollectedCoins = CoinHandler.GetCoins();
+                    score = (int)(CollectedCoins * 100 / timeTaken * 10);
+                    PlayerPrefs.SetInt("Score", score);
+
+                    Debug.Log("level " + level + "  collected money " + CollectedCoins + " time : " + timeTaken + " score " + score);
+
+                }
+                else if (level == 2)
+                {
+                    float timeTaken = Time.time - startTime;
+                    int CollectedCoins = CoinHandler.GetCoins();
+                    int preScore = PlayerPrefs.GetInt("Score");
+                    Debug.Log("prescore 2: " + preScore);
+                    score = (int)(CollectedCoins * 100 / timeTaken * 20) + preScore;
+                    PlayerPrefs.SetInt("Score", score);
+
+                    Debug.Log("level " + level + "  collected money " + CollectedCoins + " time : " + timeTaken + " score " + score);
+                    addScore(uname, score);
+                }
                 SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
-                addScore(uname, 113);
             }
         }
     }
@@ -138,16 +167,16 @@ public class playerMovement : MonoBehaviour
         if (onoff_value == 0)
         {
 
-            // Get the renderer for the particle system
-            particleSystemRenderer = myParticleSystem.GetComponent<ParticleSystemRenderer>();
-
-            // Set the new material
-            particleSystemRenderer.material = snow;
+            // Stop the particle system
+            myParticleSystem.Stop();
 
         }
 
         else if (onoff_value == 1)
         {
+            myParticleSystem.Play();
+
+
             // Get the renderer for the particle system
             particleSystemRenderer = myParticleSystem.GetComponent<ParticleSystemRenderer>();
 
@@ -155,6 +184,18 @@ public class playerMovement : MonoBehaviour
             particleSystemRenderer.material = gift;
 
         }
+
+        else if (onoff_value == 2)
+        {
+            myParticleSystem.Play();
+            // Get the renderer for the particle system
+            particleSystemRenderer = myParticleSystem.GetComponent<ParticleSystemRenderer>();
+
+            // Set the new material
+            particleSystemRenderer.material = snow;
+        }
+
+
     }
 
     // send the name and score to scoremanager script to upload it to php file as form

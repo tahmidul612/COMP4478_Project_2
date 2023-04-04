@@ -15,6 +15,14 @@ public class CoinHandler : MonoBehaviour
     void Start()
     {
         TotalCoins();
+        ResetCoins();
+    }
+
+    public static int ResetCoins()
+    {
+        int tmp = CoinCollected;
+        CoinCollected = 0;
+        return tmp;
     }
 
     private void TotalCoins()

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PauseController : MonoBehaviour
 {
     public static bool isPaused = false;
-    private Button pauseButton;
+    private static Button pauseButton;
     void Start()
     {
         pauseButton = GetComponent<Button>();
@@ -20,14 +20,14 @@ public class PauseController : MonoBehaviour
             pauseButton.gameObject.SetActive(false);
         }
     }
-    private void TogglePlayState()
+    public static void TogglePlayState()
     {
         PauseIcon(!isPaused);
         Time.timeScale = Time.timeScale == 0 ? 1 : 0;
+        Debug.Log("Paused");
         isPaused = Time.timeScale == 0;
-        // GameObject.Find("PauseMenu").GetComponent<Canvas>().enabled = true;
     }
-    private void PauseIcon(bool value)
+    private static void PauseIcon(bool value)
     {
         // larger
         pauseButton.transform.GetChild(0).GetComponent<Image>().enabled = !value;

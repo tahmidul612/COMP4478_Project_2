@@ -12,7 +12,6 @@ public class SettingsController : MonoBehaviour
     public static TMPro.TMP_Dropdown resolutionDropdown;
     private static TMPro.TMP_Dropdown displayDropdown;
     private Button resetNameButton;
-    private Button backButton;
     public static List<Resolution> resolutions;
     private static List<Display> displays;
     private InputField uname;
@@ -26,12 +25,6 @@ public class SettingsController : MonoBehaviour
             uname = transform.parent.Find("MainMenu/uname").GetComponent<InputField>();
             resetNameButton.onClick.AddListener(delegate { resetName(); });
         }
-        else
-        {
-            transform.parent.Find("MainMenu/uname").gameObject.SetActive(false);
-        }
-        backButton = transform.Find("Back").GetComponent<Button>();
-        backButton.onClick.AddListener(delegate { Back(); });
     }
     void Start()
     {
@@ -117,12 +110,6 @@ public class SettingsController : MonoBehaviour
     {
         Resolution resolution = resolutions[resolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
-    }
-
-    private void Back()
-    {
-        gameObject.SetActive(false);
-        gameObject.transform.parent.GetChild(0).gameObject.SetActive(true);
     }
 
 

@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 1114097405568161764}
   - component: {fileID: 1496066849}
   - component: {fileID: 6295142820318032578}
+  - component: {fileID: 530891291}
+  - component: {fileID: 530891292}
   m_Layer: 6
   m_Name: Background
   m_TagString: Untagged
@@ -17912,7 +17914,7 @@ GameObject:
   - component: {fileID: 8489497404275737846}
   - component: {fileID: 3131534618760761043}
   - component: {fileID: 1888842887788798045}
-  - component: {fileID: 6001077627695346850}
+  - component: {fileID: 2041868118144293119}
   m_Layer: 0
   m_Name: Coins
   m_TagString: Pickup
@@ -18286,7 +18288,7 @@ MonoBehaviour:
   isSticky: 0
   isBouncy: 0
   isSlidey: 0
---- !u!114 &6001077627695346850
+--- !u!114 &2041868118144293119
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -18295,7 +18297,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 4189670525077054821}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc205b7954290f94581377964290b3cd, type: 3}
+  m_Script: {fileID: 11500000, guid: 38b9d3b220ce78348be66561d669c12c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 0, y: 0, z: 0}

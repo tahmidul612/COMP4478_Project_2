@@ -8385,11 +8385,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1114097407310861029, guid: e8842189d3f14d14a814426343e62edd, type: 3}
       propertyPath: m_Name
-      value: Level Grid
+      value: Level Grid Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7042497935746708624, guid: e8842189d3f14d14a814426343e62edd, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[3].second.m_AnimationSpeed
-      value: 30
+      value: 30.000002
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6295142820318032578, guid: e8842189d3f14d14a814426343e62edd, type: 3}

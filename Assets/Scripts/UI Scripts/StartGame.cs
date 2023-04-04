@@ -9,7 +9,6 @@ public class StartGame : MonoBehaviour
     [SerializeField] private InputField uname;
     [SerializeField] private Button startButton;
     [SerializeField] private Button highScoresButton;
-    [SerializeField] private Button settingsButton;
     [SerializeField] private Button quitButton;
     public string userName;
 
@@ -24,7 +23,6 @@ public class StartGame : MonoBehaviour
             {
                 uname.gameObject.SetActive(false);
             }
-            settingsButton.onClick.AddListener(delegate { SettingsMenu(); });
         }
         highScoresButton.onClick.AddListener(delegate { HighScores(); });
         startButton.onClick.AddListener(delegate { StartGameButton(); });

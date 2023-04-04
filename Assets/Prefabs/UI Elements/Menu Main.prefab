@@ -125,7 +125,6 @@ MonoBehaviour:
   uname: {fileID: 7120507313436998175}
   startButton: {fileID: 0}
   highScoresButton: {fileID: 0}
-  settingsButton: {fileID: 0}
   quitButton: {fileID: 0}
   userName: 
 --- !u!1 &7120507312134436128
@@ -669,7 +668,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3319647881879828633, guid: b98c82e5439deab4a9099b18983e3f80, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b98c82e5439deab4a9099b18983e3f80, type: 3}
 --- !u!224 &5556343360803037507 stripped
 RectTransform:
@@ -902,6 +902,18 @@ PrefabInstance:
     - target: {fileID: 7956113987428674964, guid: b98c82e5439deab4a9099b18983e3f80, type: 3}
       propertyPath: m_Name
       value: Settings
+      objectReference: {fileID: 0}
+    - target: {fileID: 7956113987428674966, guid: b98c82e5439deab4a9099b18983e3f80, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7956113987428674966, guid: b98c82e5439deab4a9099b18983e3f80, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7956113987428674966, guid: b98c82e5439deab4a9099b18983e3f80, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7956113987428674967, guid: b98c82e5439deab4a9099b18983e3f80, type: 3}
       propertyPath: m_Pivot.x

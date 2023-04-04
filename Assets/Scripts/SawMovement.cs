@@ -12,6 +12,8 @@ public class SawMovement : MonoBehaviour
     [SerializeField] private LayerMask checkpointLayer;
     [SerializeField] private Transform sawDetector;
 
+    // Rotation speed (degrees/sec)
+    public int spinSpeed = 30;
 
     // Update is called once per frame
     void Update()
@@ -22,6 +24,8 @@ public class SawMovement : MonoBehaviour
             turned = true;
             StartCoroutine(waitForMove());
         }
+
+        transform.Rotate(0, 0, spinSpeed * Time.deltaTime);
     }
 
     private void FixedUpdate()

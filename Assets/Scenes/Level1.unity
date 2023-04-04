@@ -201,6 +201,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4422355636868319759, guid: 00ea31abdae47c046b4e1a2f1dbad61c, type: 3}
   m_PrefabInstance: {fileID: 1488776363}
   m_PrefabAsset: {fileID: 0}
+--- !u!20 &901340274 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 4422355636868319756, guid: 00ea31abdae47c046b4e1a2f1dbad61c, type: 3}
+  m_PrefabInstance: {fileID: 1488776363}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1281048311
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -231,7 +236,15 @@ PrefabInstance:
     - target: {fileID: 3213312749230534865, guid: f804cf08dce0604428aea622a4cd613c, type: 3}
       propertyPath: m_Camera
       value: 
-      objectReference: {fileID: 1488776364}
+      objectReference: {fileID: 901340274}
+    - target: {fileID: 3213312749230534865, guid: f804cf08dce0604428aea622a4cd613c, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3213312749230534865, guid: f804cf08dce0604428aea622a4cd613c, type: 3}
+      propertyPath: m_PixelPerfect
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3213312749230534866, guid: f804cf08dce0604428aea622a4cd613c, type: 3}
       propertyPath: m_Pivot.x
       value: 0

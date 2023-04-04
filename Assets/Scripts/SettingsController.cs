@@ -9,12 +9,12 @@ using UnityEngine.UI;
 
 public class SettingsController : MonoBehaviour
 {
-    private static TMPro.TMP_Dropdown resolutionDropdown;
+    public static TMPro.TMP_Dropdown resolutionDropdown;
     private static TMPro.TMP_Dropdown displayDropdown;
     private Slider volumeSlider;
     private Button resetNameButton;
     private Button backButton;
-    private static List<Resolution> resolutions;
+    public static List<Resolution> resolutions;
     private static List<Display> displays;
     public static AudioMixer mainMixer;
     private InputField uname;

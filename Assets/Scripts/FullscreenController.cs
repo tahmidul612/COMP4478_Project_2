@@ -7,20 +7,24 @@ using UnityEngine.UI;
 public class FullscreenController : MonoBehaviour
 {
     public static Button button;
-    void Awake()
+    public bool isFullScreen;
+    void Start()
     {
         button = GetComponent<Button>();
+        isFullScreen = Screen.fullScreen;
+        FullScreenIcon(isFullScreen);
+        button.onClick.AddListener(delegate { ToggleFullScreen(); });
     }
     public void ToggleFullScreen()
     {
-        bool isFullscreen = Screen.fullScreen;
-        Screen.fullScreen = !isFullscreen;
-        FullScreenIcon(!isFullscreen);
-        GameObject settings = GameObject.Find("Settings");
-        if (settings != null && settings.activeSelf)
-        {
-            SettingsController.SetupResolutions();
-        }
+        isFullScreen = !Screen.fullScreen;
+        Screen.fullScreen = isFullScreen;
+        FullScreenIcon(isFullScreen);
+        // GameObject settings = GameObject.Find("Settings");
+        // if (settings != null && settings.activeSelf)
+        // {
+        //     SettingsController.SetupResolutions();
+        // }
     }
     public static void FullScreenIcon(bool value)
     {

@@ -3,18 +3,16 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class UIButtons : MonoBehaviour
+public class PauseController : MonoBehaviour
 {
     public static bool isPaused = false;
     private Button pauseButton;
     void Start()
     {
-        FullscreenController.FullScreenIcon(Screen.fullScreen);
-        pauseButton = transform.GetComponentsInChildren<Button>(true).Where<Button>(b => b.name == "Pause").FirstOrDefault();
+        pauseButton = GetComponent<Button>();
         PauseIcon(isPaused);
         if (SceneManager.GetActiveScene().name.Contains("Level"))
         {
-            pauseButton.gameObject.SetActive(true);
             pauseButton.onClick.AddListener(delegate { TogglePlayState(); });
         }
         else

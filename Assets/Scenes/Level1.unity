@@ -511,6 +511,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2080613949 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3637601465541406863, guid: 98a98b86fd45ef84488092928be12a3c, type: 3}
+  m_PrefabInstance: {fileID: 603456407550618713}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2080613957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2080613949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38b9d3b220ce78348be66561d669c12c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2135223845 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8695198491174724206, guid: a5ab50040d731634f9b292b4dfaea3e5, type: 3}
@@ -603,7 +620,8 @@ PrefabInstance:
       propertyPath: m_AnimatedTiles.Array.data[4].second.m_AnimationSpeed
       value: 30
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6563983439744098632, guid: 98a98b86fd45ef84488092928be12a3c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 98a98b86fd45ef84488092928be12a3c, type: 3}
 --- !u!1001 &1312876524173593698
 PrefabInstance:

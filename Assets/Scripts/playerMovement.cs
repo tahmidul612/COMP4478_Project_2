@@ -23,16 +23,16 @@ public class playerMovement : MonoBehaviour
     public int onoff_value = 0;
     private float updateInterval = 3.0f; // The update interval in seconds
     public string uname;
-    public moneyHandler moneyHandlerInstance;
-    public int score=0;
-    
-private float startTime;
+    public CoinHandler moneyHandlerInstance;
+    public int score = 0;
+
+    private float startTime;
 
     // Start is called before the first frame update
     void Start()
     {
-           
-   moneyHandlerInstance = FindObjectOfType<moneyHandler>();
+
+        moneyHandlerInstance = FindObjectOfType<CoinHandler>();
         startTime = Time.time;
         uname = PlayerPrefs.GetString("username");
         // Call MyUpdateFunction every updateInterval seconds, starting from 0 seconds
@@ -89,43 +89,33 @@ private float startTime;
     {
         if (other.gameObject.tag == "NextLevelDoor")
         {
-
-            
             if (Input.GetAxisRaw("Vertical") == 1)
             {
-        int level = SceneManager.GetActiveScene().buildIndex;
+                int level = SceneManager.GetActiveScene().buildIndex;
 
+                if (level == 1)
+                {
+                    float timeTaken = Time.time - startTime;
+                    int CollectedCoins = CoinHandler.GetCoins();
+                    score = (int)(CollectedCoins * 100 / timeTaken * 10);
+                    PlayerPrefs.SetInt("Score", score);
 
-if(level ==1){
-  float timeTaken = Time.time - startTime;
-            int collectedMoney = moneyHandlerInstance.moneyCollected;
-             score = (int) ((collectedMoney * 100 / timeTaken) * 10);
-             PlayerPrefs.SetInt("Score", score);
+                    Debug.Log("level " + level + "  collected money " + CollectedCoins + " time : " + timeTaken + " score " + score);
 
-             Debug.Log("level "+ level+"  collected money " + collectedMoney +" time : "+timeTaken  + " score "+ score);
-       
-}
+                }
+                else if (level == 2)
+                {
+                    float timeTaken = Time.time - startTime;
+                    int CollectedCoins = CoinHandler.GetCoins();
+                    int preScore = PlayerPrefs.GetInt("Score");
+                    Debug.Log("prescore 2: " + preScore);
+                    score = (int)(CollectedCoins * 100 / timeTaken * 20) + preScore;
+                    PlayerPrefs.SetInt("Score", score);
 
-
-else if (level==2){
-float timeTaken = Time.time - startTime;
-int collectedMoney = moneyHandlerInstance.moneyCollected;
-int preScore = PlayerPrefs.GetInt("Score");
-Debug.Log("prescore 2: " + preScore);
-score = (int) ((collectedMoney * 100 / timeTaken) * 20) + preScore;
-PlayerPrefs.SetInt("Score", score);
-
-Debug.Log("level "+ level+"  collected money " + collectedMoney +" time : "+timeTaken  + " score "+ score);
- addScore(uname, score);
-}
-                
-          
-            
-            
-           
-            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
-              
-                
+                    Debug.Log("level " + level + "  collected money " + CollectedCoins + " time : " + timeTaken + " score " + score);
+                    addScore(uname, score);
+                }
+                SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
             }
         }
     }
@@ -177,16 +167,16 @@ Debug.Log("level "+ level+"  collected money " + collectedMoney +" time : "+time
         if (onoff_value == 0)
         {
 
-        // Stop the particle system
-    myParticleSystem.Stop();
+            // Stop the particle system
+            myParticleSystem.Stop();
 
         }
 
         else if (onoff_value == 1)
         {
-             myParticleSystem.Play();
+            myParticleSystem.Play();
 
-      
+
             // Get the renderer for the particle system
             particleSystemRenderer = myParticleSystem.GetComponent<ParticleSystemRenderer>();
 
@@ -195,14 +185,15 @@ Debug.Log("level "+ level+"  collected money " + collectedMoney +" time : "+time
 
         }
 
-         else if (onoff_value ==2 ){
-  myParticleSystem.Play();
-               // Get the renderer for the particle system
+        else if (onoff_value == 2)
+        {
+            myParticleSystem.Play();
+            // Get the renderer for the particle system
             particleSystemRenderer = myParticleSystem.GetComponent<ParticleSystemRenderer>();
 
             // Set the new material
             particleSystemRenderer.material = snow;
-         }
+        }
 
 
     }

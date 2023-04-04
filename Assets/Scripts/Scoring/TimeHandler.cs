@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Timer : MonoBehaviour
+public class TimeHandler : MonoBehaviour
 {
     private TMPro.TMP_Text timerText;
     float currentTime;
+    public static int timeInSeconds;
     bool timerActive = false;
 
     void Start()
@@ -18,10 +19,6 @@ public class Timer : MonoBehaviour
         {
             StartTimer();
         }
-        else
-        {
-            StopTimer();
-        }
     }
 
     void Update()
@@ -30,8 +27,8 @@ public class Timer : MonoBehaviour
         {
             currentTime += Time.deltaTime;
         }
-        TimeSpan time = TimeSpan.FromSeconds(currentTime);
-        timerText.text = "Time: " + time.Seconds.ToString() + " sec";
+        int timeInSeconds = TimeSpan.FromSeconds(currentTime).Seconds;
+        timerText.text = "Time: " + timeInSeconds + " sec";
     }
     public void StartTimer()
     {
@@ -40,5 +37,10 @@ public class Timer : MonoBehaviour
     public void StopTimer()
     {
         timerActive = false;
+    }
+
+    public static int GetTimeInSeconds()
+    {
+        return timeInSeconds;
     }
 }

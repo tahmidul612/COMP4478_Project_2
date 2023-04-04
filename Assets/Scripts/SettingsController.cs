@@ -9,12 +9,12 @@ using UnityEngine.UI;
 
 public class SettingsController : MonoBehaviour
 {
-    private static TMPro.TMP_Dropdown resolutionDropdown;
+    public static TMPro.TMP_Dropdown resolutionDropdown;
     private static TMPro.TMP_Dropdown displayDropdown;
     private Slider volumeSlider;
     private Button resetNameButton;
     private Button backButton;
-    private static List<Resolution> resolutions;
+    public static List<Resolution> resolutions;
     private static List<Display> displays;
     public static AudioMixer mainMixer;
     private InputField uname;
@@ -35,7 +35,7 @@ public class SettingsController : MonoBehaviour
         {
             transform.parent.Find("MainMenu/uname").gameObject.SetActive(false);
         }
-        backButton = transform.Find("Back Button").GetComponent<Button>();
+        backButton = transform.Find("Back").GetComponent<Button>();
         backButton.onClick.AddListener(delegate { Back(); });
     }
     void Start()
@@ -44,7 +44,7 @@ public class SettingsController : MonoBehaviour
     }
     private void OnEnable()
     {
-        setupResolutions();
+        SetupResolutions();
         if (Application.platform == RuntimePlatform.WebGLPlayer)
         {
             displayDropdown.transform.parent.gameObject.SetActive(false);
@@ -68,7 +68,7 @@ public class SettingsController : MonoBehaviour
         displayDropdown.RefreshShownValue();
     }
 
-    public static void setupResolutions()
+    public static void SetupResolutions()
     {
         int currentRefreshRate = Screen.currentResolution.refreshRate;
         Resolution currentResolution = new()

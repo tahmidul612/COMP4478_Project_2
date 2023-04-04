@@ -9,7 +9,7 @@ public class UIButtons : MonoBehaviour
     private Button pauseButton;
     void Start()
     {
-        FullscreenController.fullScreenIcon(Screen.fullScreen);
+        FullscreenController.FullScreenIcon(Screen.fullScreen);
         pauseButton = transform.GetComponentsInChildren<Button>(true).Where<Button>(b => b.name == "Pause").FirstOrDefault();
         PauseIcon(isPaused);
         if (SceneManager.GetActiveScene().name.Contains("Level"))

@@ -35,7 +35,7 @@ public class SettingsController : MonoBehaviour
         {
             transform.parent.Find("MainMenu/uname").gameObject.SetActive(false);
         }
-        backButton = transform.Find("Back Button").GetComponent<Button>();
+        backButton = transform.Find("Back").GetComponent<Button>();
         backButton.onClick.AddListener(delegate { Back(); });
     }
     void Start()
@@ -44,7 +44,7 @@ public class SettingsController : MonoBehaviour
     }
     private void OnEnable()
     {
-        setupResolutions();
+        SetupResolutions();
         if (Application.platform == RuntimePlatform.WebGLPlayer)
         {
             displayDropdown.transform.parent.gameObject.SetActive(false);
@@ -68,7 +68,7 @@ public class SettingsController : MonoBehaviour
         displayDropdown.RefreshShownValue();
     }
 
-    public static void setupResolutions()
+    public static void SetupResolutions()
     {
         int currentRefreshRate = Screen.currentResolution.refreshRate;
         Resolution currentResolution = new()

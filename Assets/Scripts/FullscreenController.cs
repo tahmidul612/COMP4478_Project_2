@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class FullscreenController : MonoBehaviour
@@ -14,13 +15,14 @@ public class FullscreenController : MonoBehaviour
     {
         bool isFullscreen = Screen.fullScreen;
         Screen.fullScreen = !isFullscreen;
-        fullScreenIcon(!isFullscreen);
-        if (GameObject.Find("SettingsMenu").activeSelf)
+        FullScreenIcon(!isFullscreen);
+        GameObject settings = GameObject.Find("Settings");
+        if (settings != null && settings.activeSelf)
         {
-            SettingsController.setupResolutions();
+            SettingsController.SetupResolutions();
         }
     }
-    public static void fullScreenIcon(bool value)
+    public static void FullScreenIcon(bool value)
     {
         // larger
         button.transform.GetChild(0).GetComponent<Image>().enabled = !value;

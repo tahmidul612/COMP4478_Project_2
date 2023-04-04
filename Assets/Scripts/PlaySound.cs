@@ -6,12 +6,10 @@ using UnityEngine.UI;
 public class PlaySound : MonoBehaviour
 {
     private AudioSource audioSource;
-    private AudioClip audioClip;
     private Button button;
     void Awake()
     {
         audioSource = GetComponent<AudioSource>();
-        audioClip = GetComponent<AudioClip>();
         button = GetComponent<Button>();
         if (audioSource == null || audioSource == null)
         {

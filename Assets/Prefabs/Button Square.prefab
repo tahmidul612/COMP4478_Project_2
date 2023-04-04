@@ -105,7 +105,6 @@ GameObject:
   - component: {fileID: 9069571052486690169}
   - component: {fileID: 2691158082587380223}
   - component: {fileID: 476051422130811343}
-  - component: {fileID: 1948445221393496177}
   m_Layer: 5
   m_Name: Button Square
   m_TagString: Untagged
@@ -233,7 +232,19 @@ MonoBehaviour:
   - eventID: 2
     callback:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 476051422130811343}
+          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+          m_MethodName: Play
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!82 &476051422130811343
 AudioSource:
   m_ObjectHideFlags: 0
@@ -330,18 +341,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1948445221393496177
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9069571052486690175}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75a09f0d2ce6f0a419d895f797db2fdf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &9069571052777731559
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,14 +6,24 @@ using UnityEngine.SceneManagement;
 public class playerMovement : MonoBehaviour
 {
     public float speed = 10f;
-    public int jump = 3;
+    public int jump;
     private Vector2 jumpHeight;
     Rigidbody2D rb;
     float lastDirection;
+    public float maxSpeed = 10f;
 
     public float lastXMove;
     public float lastYMove;
 
+    AudioSource audioSource;
+    public AudioClip walkClip;
+    public AudioClip jumpClip;
+    public AudioClip stickySlimeClip;
+    public AudioClip bouncySlimeClip;
+    public AudioClip slideySlimeClip;
+
+    private bool isMoving;
+//
     public int numCoin = 0;
 
     public ParticleSystem myParticleSystem; // Declare the particle system variable
@@ -39,6 +49,8 @@ public class playerMovement : MonoBehaviour
         InvokeRepeating("MyUpdateFunction", 0.0f, updateInterval);
 
         rb = GetComponent<Rigidbody2D>();
+        jump = 5;
+        audioSource = gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -46,7 +58,6 @@ public class playerMovement : MonoBehaviour
     {
         float xMove = Input.GetAxisRaw("Horizontal"); // d key changes value to 1, a key changes value to -1
         float yMove = Input.GetAxisRaw("Vertical"); // w key changes value to 1, s key changes value to -1
-
         if (xMove != 0)
         {
             lastXMove = xMove;
@@ -56,16 +67,22 @@ public class playerMovement : MonoBehaviour
             lastYMove = yMove;
         }
 
+        if(xMove !=0){
+            isMoving = true;
+        }else{
+            isMoving = false;
+            if(audioSource.clip == walkClip){
+                stopAudio();
+            }
+        }
+
         Vector2 force = new Vector2(xMove, 0) * speed;
-        rb.AddForce(force);
+        rb.AddForce(force, ForceMode2D.Impulse);
 
         Vector3 clampVel = rb.velocity;
-        clampVel.x = Mathf.Clamp(clampVel.x, -10f, 10f);
+        clampVel.x = Mathf.Clamp(clampVel.x, -maxSpeed, maxSpeed);
         rb.velocity = clampVel;
 
-        Vector3 clampVelDown = rb.velocity;
-        clampVelDown.y = Mathf.Clamp(clampVel.y, -10f, 10f);
-        rb.velocity = clampVelDown;
     }
 
     void OnCollisionStay2D(Collision2D coll)
@@ -73,15 +90,53 @@ public class playerMovement : MonoBehaviour
 
         if (Input.GetAxisRaw("Vertical") == 1)
         {
-            if (coll.gameObject.tag == "Ground" || coll.gameObject.name == "Tilemap")
+            if (coll.gameObject.tag == "Ground")
             {
                 playerJump(coll, 0, jump);
+                stopAudio();
+                playAudio(jumpClip);
             }
-            if (coll.gameObject.tag == "Wall")
+            if (coll.gameObject.GetComponent<customTags>().getSticky())
             {
-                Debug.Log(lastXMove * -1 * (speed / 2));
                 playerJump(coll, lastXMove * -1 * (speed / 2), jump);
             }
+        }
+        if(coll.gameObject.GetComponent<customTags>().getSlidey()){
+            maxSpeed = 20f;
+        }else{
+            maxSpeed = 10f;
+        }
+
+        if(isMoving && coll.gameObject.tag == "Ground" && !audioSource.isPlaying){
+            playAudio(walkClip);
+        }
+    }
+    
+    private void OnCollisionEnter2D(Collision2D other) {
+        var tag = other.gameObject.GetComponent<customTags>();
+        if(tag.getSticky()){
+            audioSource.PlayOneShot(stickySlimeClip, 0.7f);
+        }
+        if(tag.getBouncy()){
+            audioSource.PlayOneShot(bouncySlimeClip, 0.7f);
+        }
+        if(tag.getSlidey()){
+            audioSource.PlayOneShot(slideySlimeClip, 0.7f);
+        }
+    }
+
+    public void playAudio(AudioClip clipTP){
+        audioSource.clip = clipTP;
+        audioSource.Play();
+    }
+
+    public void stopAudio(){
+        audioSource.Stop();
+    }
+
+    private void OnCollisionExit2D(Collision2D other) {
+        if(other.gameObject.GetComponent<customTags>().getSticky()){
+            lastXMove = lastXMove *-1;
         }
     }
 
@@ -128,8 +183,7 @@ public class playerMovement : MonoBehaviour
             height = (float)(yMod * 1.5);
         }
         jumpHeight = new Vector2(x, height);
-        float yMove = Input.GetAxisRaw("Vertical"); // w key changes value to 1, s key changes value to -1
-        rb.AddForce(jumpHeight * yMove, ForceMode2D.Impulse);
+        rb.AddForce(jumpHeight, ForceMode2D.Impulse);
     }
 
     // Update is called once per frame

@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8695198491174724205}
   - component: {fileID: 8695198491174724194}
   - component: {fileID: 1497908116}
+  - component: {fileID: 3453354788560399082}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -152,7 +153,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -172,8 +173,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 6
   jump: 4
+  maxSpeed: 10
   lastXMove: 0
   lastYMove: 0
+  walkClip: {fileID: 8300000, guid: 65dfa0cb62e6ded4fbc8e39f0b26fa51, type: 3}
+  jumpClip: {fileID: 8300000, guid: 75dda050ab987cd4181607de8b2fb5d5, type: 3}
+  stickySlimeClip: {fileID: 8300000, guid: 2fdb4e21892bc1144a0736d2aa37dd5f, type: 3}
+  bouncySlimeClip: {fileID: 8300000, guid: 5aefb46211666bb42a9ceef42937642b, type: 3}
+  slideySlimeClip: {fileID: 8300000, guid: cb73d35d2371cae4d8aa3c57251e486b, type: 3}
+  numCoin: 0
+  myParticleSystem: {fileID: 0}
+  gift: {fileID: 0}
+  snow: {fileID: 0}
+  onoff_value: 0
+  uname: 
+  moneyHandlerInstance: {fileID: 0}
+  score: 0
 --- !u!114 &8695198491174724194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,3 +213,99 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f1f0af0953860f4eb739b62ea09062f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &3453354788560399082
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8695198491174724201}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 31b9049531d30844aafe680de1419b09, type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

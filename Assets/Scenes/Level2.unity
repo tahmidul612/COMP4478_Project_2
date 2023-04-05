@@ -404,6 +404,107 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4416046080244182578, guid: 9c461efae2c03554c91eacf61d1829aa, type: 3}
   m_PrefabInstance: {fileID: 416114785}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &603267270 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1093626382404179607, guid: 1ea1bf3b1fb40354089e21631215ad09, type: 3}
+  m_PrefabInstance: {fileID: 746000702238108711}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &603267278
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 603267270}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &773623871
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1537,6 +1638,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1093626382404179600, guid: 1ea1bf3b1fb40354089e21631215ad09, type: 3}
+      propertyPath: m_AnimatedTiles.Array.data[0].second.m_AnimationSpeed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1093626382404179600, guid: 1ea1bf3b1fb40354089e21631215ad09, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[1].second.m_AnimationSpeed
       value: 30
       objectReference: {fileID: 0}
@@ -1544,6 +1649,18 @@ PrefabInstance:
       propertyPath: m_AnimatedTiles.Array.data[2].second.m_AnimationSpeed
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 1093626382404179600, guid: 1ea1bf3b1fb40354089e21631215ad09, type: 3}
+      propertyPath: m_AnimatedTiles.Array.data[3].second.m_AnimationSpeed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1093626382404179600, guid: 1ea1bf3b1fb40354089e21631215ad09, type: 3}
+      propertyPath: m_AnimatedTiles.Array.data[4].second.m_AnimationSpeed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2402929733873503111, guid: 1ea1bf3b1fb40354089e21631215ad09, type: 3}
+      propertyPath: coinClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 94b1225911cc5d54ba424c855e27367c, type: 3}
     - target: {fileID: 7167122711632840016, guid: 1ea1bf3b1fb40354089e21631215ad09, type: 3}
       propertyPath: cameraObject
       value: 

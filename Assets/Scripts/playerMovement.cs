@@ -23,7 +23,7 @@ public class playerMovement : MonoBehaviour
     public AudioClip slideySlimeClip;
 
     private bool isMoving;
-//
+    //
     public int numCoin = 0;
 
     public ParticleSystem myParticleSystem; // Declare the particle system variable
@@ -63,11 +63,15 @@ public class playerMovement : MonoBehaviour
             lastYMove = yMove;
         }
 
-        if(xMove !=0){
+        if (xMove != 0)
+        {
             isMoving = true;
-        }else{
+        }
+        else
+        {
             isMoving = false;
-            if(audioSource.clip == walkClip){
+            if (audioSource.clip == walkClip)
+            {
                 stopAudio();
             }
         }
@@ -84,7 +88,7 @@ public class playerMovement : MonoBehaviour
     void OnCollisionStay2D(Collision2D coll)
     {
 
-        if (Input.GetAxisRaw("Vertical") == 1)
+        if (Input.GetAxisRaw("Vertical") == 1 || Input.GetAxisRaw("Jump") == 1)
         {
             if (coll.gameObject.tag == "Ground")
             {
@@ -97,42 +101,54 @@ public class playerMovement : MonoBehaviour
                 playerJump(coll, lastXMove * -1 * (speed / 2), jump);
             }
         }
-        if(coll.gameObject.GetComponent<customTags>().getSlidey()){
+        if (coll.gameObject.GetComponent<customTags>().getSlidey())
+        {
             maxSpeed = 20f;
-        }else{
+        }
+        else
+        {
             maxSpeed = 10f;
         }
 
-        if(isMoving && coll.gameObject.tag == "Ground" && !audioSource.isPlaying){
+        if (isMoving && coll.gameObject.tag == "Ground" && !audioSource.isPlaying)
+        {
             playAudio(walkClip);
         }
     }
-    
-    private void OnCollisionEnter2D(Collision2D other) {
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
         var tag = other.gameObject.GetComponent<customTags>();
-        if(tag.getSticky()){
+        if (tag.getSticky())
+        {
             audioSource.PlayOneShot(stickySlimeClip, 0.7f);
         }
-        if(tag.getBouncy()){
+        if (tag.getBouncy())
+        {
             audioSource.PlayOneShot(bouncySlimeClip, 0.7f);
         }
-        if(tag.getSlidey()){
+        if (tag.getSlidey())
+        {
             audioSource.PlayOneShot(slideySlimeClip, 0.7f);
         }
     }
 
-    public void playAudio(AudioClip clipTP){
+    public void playAudio(AudioClip clipTP)
+    {
         audioSource.clip = clipTP;
         audioSource.Play();
     }
 
-    public void stopAudio(){
+    public void stopAudio()
+    {
         audioSource.Stop();
     }
 
-    private void OnCollisionExit2D(Collision2D other) {
-        if(other.gameObject.GetComponent<customTags>().getSticky()){
-            lastXMove = lastXMove *-1;
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.gameObject.GetComponent<customTags>().getSticky())
+        {
+            lastXMove = lastXMove * -1;
         }
     }
 

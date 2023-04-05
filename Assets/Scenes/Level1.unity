@@ -1158,6 +1158,10 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7630244459916550522, guid: 98a98b86fd45ef84488092928be12a3c, type: 3}
+      propertyPath: m_AnimatedTiles.Array.data[3].second.m_AnimationSpeed
+      value: 30.000002
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630244459916550522, guid: 98a98b86fd45ef84488092928be12a3c, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[4].second.m_AnimationSpeed
       value: 30
       objectReference: {fileID: 0}

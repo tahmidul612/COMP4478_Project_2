@@ -15,6 +15,14 @@ public class CoinHandler : MonoBehaviour
     void Start()
     {
         TotalCoins();
+        ResetCoins();
+    }
+
+    public static int ResetCoins()
+    {
+        int tmp = CoinCollected;
+        CoinCollected = 0;
+        return tmp;
     }
 
     private void TotalCoins()
@@ -24,8 +32,6 @@ public class CoinHandler : MonoBehaviour
         BoundsInt bounds = tilemap.cellBounds;
         TileBase[] allTiles = tilemap.GetTilesBlock(bounds);
         MaxCollectable = allTiles.Count(tile => tile != null);
-        Debug.Log("Total coins: " + MaxCollectable);
-
         CoinText = GetComponent<TextMeshProUGUI>();
     }
 

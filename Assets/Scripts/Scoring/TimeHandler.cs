@@ -7,14 +7,13 @@ using UnityEngine.SceneManagement;
 public class TimeHandler : MonoBehaviour
 {
     private TMPro.TMP_Text timerText;
-    float currentTime;
-    public static int timeInSeconds;
-    bool timerActive = false;
+    private static float currentTime;
+    private static bool timerActive = false;
 
     void Start()
     {
         timerText = GetComponent<TMPro.TMP_Text>();
-        currentTime = 0;
+        currentTime = 0f;
         if (SceneManager.GetActiveScene().name.Contains("Level"))
         {
             StartTimer();
@@ -26,21 +25,20 @@ public class TimeHandler : MonoBehaviour
         if (timerActive)
         {
             currentTime += Time.deltaTime;
+            timerText.text = "Time: " + Mathf.RoundToInt(currentTime) + " sec";
         }
-        int timeInSeconds = TimeSpan.FromSeconds(currentTime).Seconds;
-        timerText.text = "Time: " + timeInSeconds + " sec";
     }
-    public void StartTimer()
+    public static void StartTimer()
     {
         timerActive = true;
     }
-    public void StopTimer()
+    public static void StopTimer()
     {
         timerActive = false;
     }
 
-    public static int GetTimeInSeconds()
+    public static float GetTimeInSeconds()
     {
-        return timeInSeconds;
+        return currentTime;
     }
 }

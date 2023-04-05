@@ -23,22 +23,18 @@ public class playerMovement : MonoBehaviour
     public int onoff_value = 0;
     private float updateInterval = 3.0f; // The update interval in seconds
     public string uname;
-    public CoinHandler moneyHandlerInstance;
-    public int score = 0;
-
-    private float startTime;
+    // public int CurrentScore = 0;
+    private bool ScoreUpdated;
 
     // Start is called before the first frame update
     void Start()
     {
-
-        moneyHandlerInstance = FindObjectOfType<CoinHandler>();
-        startTime = Time.time;
         uname = PlayerPrefs.GetString("username");
         // Call MyUpdateFunction every updateInterval seconds, starting from 0 seconds
         InvokeRepeating("MyUpdateFunction", 0.0f, updateInterval);
 
         rb = GetComponent<Rigidbody2D>();
+        ScoreUpdated = false;
     }
 
     // Update is called once per frame
@@ -79,7 +75,7 @@ public class playerMovement : MonoBehaviour
             }
             if (coll.gameObject.tag == "Wall")
             {
-                Debug.Log(lastXMove * -1 * (speed / 2));
+                //Debug.Log(lastXMove * -1 * (speed / 2));
                 playerJump(coll, lastXMove * -1 * (speed / 2), jump);
             }
         }
@@ -91,29 +87,52 @@ public class playerMovement : MonoBehaviour
         {
             if (Input.GetAxisRaw("Vertical") == 1)
             {
-                int level = SceneManager.GetActiveScene().buildIndex;
+                // int level = SceneManager.GetActiveScene().buildIndex;
 
-                if (level == 1)
+                // if (level == 1 && !scoreUpdated)
+                // {
+                //     TimeHandler.StopTimer();
+                //     float timeTaken = TimeHandler.GetTimeInSeconds();
+                //     int CollectedCoins = CoinHandler.GetCoins();
+                //     CurrentScore = Mathf.RoundToInt(CollectedCoins * 100 / timeTaken * 10);
+                //     PlayerPrefs.SetInt("Score1", CurrentScore);
+
+                //     Debug.Log("level " + level + "  collected money " + CollectedCoins + " time : " + timeTaken + " score " + CurrentScore);
+                //     scoreUpdated = true;
+
+                // }
+                // else if (level == 2 && !scoreUpdated)
+                // {
+                //     TimeHandler.StopTimer();
+                //     float timeTaken = TimeHandler.GetTimeInSeconds();
+                //     int CollectedCoins = CoinHandler.GetCoins();
+                //     int PreviousScore = PlayerPrefs.GetInt("Score1");
+                //     CurrentScore = Mathf.RoundToInt(CollectedCoins * 100 / timeTaken * 20);
+                //     PlayerPrefs.SetInt("Score2", CurrentScore);
+                //     Debug.Log("level " + level + "  collected money " + CollectedCoins + " time : " + timeTaken + " score " + CurrentScore);
+                //     Debug.Log(string.Format("Level: {0}, CoinCollected: {1} , TimeTaken: {2}, LevelScore: {3}, TotalScore: {4}", level, CollectedCoins, timeTaken, CurrentScore));
+                //     addScore(uname, CurrentScore + PreviousScore);
+                //     scoreUpdated = true;
+                // }
+                if (!ScoreUpdated)
                 {
-                    float timeTaken = Time.time - startTime;
+                    TimeHandler.StopTimer();
+                    float timeTaken = TimeHandler.GetTimeInSeconds();
                     int CollectedCoins = CoinHandler.GetCoins();
-                    score = (int)(CollectedCoins * 100 / timeTaken * 10);
-                    PlayerPrefs.SetInt("Score", score);
-
-                    Debug.Log("level " + level + "  collected money " + CollectedCoins + " time : " + timeTaken + " score " + score);
-
-                }
-                else if (level == 2)
-                {
-                    float timeTaken = Time.time - startTime;
-                    int CollectedCoins = CoinHandler.GetCoins();
-                    int preScore = PlayerPrefs.GetInt("Score");
-                    Debug.Log("prescore 2: " + preScore);
-                    score = (int)(CollectedCoins * 100 / timeTaken * 20) + preScore;
-                    PlayerPrefs.SetInt("Score", score);
-
-                    Debug.Log("level " + level + "  collected money " + CollectedCoins + " time : " + timeTaken + " score " + score);
-                    addScore(uname, score);
+                    int CurrentLevel = SceneManager.GetActiveScene().buildIndex;
+                    int CurrentScore = Mathf.RoundToInt(CollectedCoins * 100 / timeTaken * 10 * CurrentLevel);
+                    PlayerPrefs.SetInt("Score" + CurrentLevel, CurrentScore);
+                    int TotalScore = 0;
+                    for (int i = 1; i <= CurrentLevel; i++)
+                    {
+                        TotalScore += PlayerPrefs.GetInt("Score" + i);
+                    }
+                    Debug.Log(string.Format("Level: {0}, CoinCollected: {1} , TimeTaken: {2}, LevelScore: {3}, TotalScore: {4}", CurrentLevel, CollectedCoins, timeTaken, CurrentScore, TotalScore));
+                    if (CurrentLevel == SceneManager.sceneCountInBuildSettings - 3)
+                    {
+                        addScore(uname, TotalScore);
+                    }
+                    ScoreUpdated = true;
                 }
                 SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
             }
@@ -140,7 +159,7 @@ public class playerMovement : MonoBehaviour
         //instructor change game on off
         StartCoroutine(FetchData());
 
-        Debug.Log(onoff_value);
+        //Debug.Log(onoff_value);
     }
 
     //get the data from control table
@@ -156,12 +175,12 @@ public class playerMovement : MonoBehaviour
 
         if (www.result != UnityWebRequest.Result.Success)
         {
-            Debug.Log("Error fetching data from database: " + www.error);
+            //Debug.Log("Error fetching data from database: " + www.error);
         }
         else
         {
             onoff_value = int.Parse(www.downloadHandler.text);
-            Debug.Log("Value of onoff column: " + onoff_value);
+            //Debug.Log("Value of onoff column: " + onoff_value);
         }
 
         if (onoff_value == 0)

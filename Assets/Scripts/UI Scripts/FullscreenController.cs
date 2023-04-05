@@ -6,16 +6,15 @@ using UnityEngine.UI;
 
 public class FullscreenController : MonoBehaviour
 {
-    public static Button button;
-    public bool isFullScreen;
+    private Button button;
+    private bool isFullScreen;
     void Start()
     {
         button = GetComponent<Button>();
         isFullScreen = Screen.fullScreen;
         FullScreenIcon(isFullScreen);
-        button.onClick.AddListener(delegate { ToggleFullScreen(); });
     }
-    public void ToggleFullScreen()
+    private void ToggleFullScreen()
     {
         isFullScreen = !Screen.fullScreen;
         Screen.fullScreen = isFullScreen;
@@ -26,7 +25,7 @@ public class FullscreenController : MonoBehaviour
         //     SettingsController.SetupResolutions();
         // }
     }
-    public static void FullScreenIcon(bool value)
+    private void FullScreenIcon(bool value)
     {
         // larger
         button.transform.GetChild(0).GetComponent<Image>().enabled = !value;

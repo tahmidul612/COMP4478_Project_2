@@ -32,15 +32,15 @@ public class GeneratePopup : MonoBehaviour
         }
         else
         {
-            Debug.Log("Popup already in progress");
+            //Debug.Log("Popup already in progress");
             StartCoroutine(DelayPopup());
         }
     }
     IEnumerator DelayPopup()
     {
-        Debug.Log("Delaying popup");
+        //Debug.Log("Delaying popup");
         yield return new WaitUntil(() => inProgress == null);
-        Debug.Log("Popup delayed");
+        //Debug.Log("Popup delayed");
         inProgress = StartCoroutine(WriteText(helpText));
     }
     IEnumerator WriteText(string helpText)

@@ -32,8 +32,6 @@ public class CoinHandler : MonoBehaviour
         BoundsInt bounds = tilemap.cellBounds;
         TileBase[] allTiles = tilemap.GetTilesBlock(bounds);
         MaxCollectable = allTiles.Count(tile => tile != null);
-        Debug.Log("Total coins: " + MaxCollectable);
-
         CoinText = GetComponent<TextMeshProUGUI>();
     }
 

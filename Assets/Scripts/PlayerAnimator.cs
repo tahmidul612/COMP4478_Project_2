@@ -15,8 +15,6 @@ public class PlayerAnimator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-        Debug.Log("name : "+PlayerPrefs.GetString("username"));
         rb = GetComponent<Rigidbody2D>();
         playerAnim = GetComponent<Animator>();
         playerAnim.ResetTrigger("jumping");

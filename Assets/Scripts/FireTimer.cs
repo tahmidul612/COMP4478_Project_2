@@ -22,12 +22,12 @@ public class FireTimer : MonoBehaviour
 
     IEnumerator fire()
     {
-        Debug.Log("Working?");
+        // Debug.Log("Working?");
         yield return new WaitForSeconds(2f);
         embersBlock.SetActive(true);
-        Debug.Log("Workin2g?");
+        // Debug.Log("Workin2g?");
         yield return new WaitForSeconds(1f);
-        Debug.Log("Working3?");
+        // Debug.Log("Working3?");
         fireBlock.SetActive(true);
         yield return new WaitForSeconds(3f);
         fireBlock.SetActive(false);

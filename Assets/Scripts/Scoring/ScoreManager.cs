@@ -34,7 +34,7 @@ public class ScoreManager : MonoBehaviour
         // Check if there was an error with the request
         if (request.result != UnityWebRequest.Result.Success)
         {
-            Debug.Log(request.error);
+            Debug.LogError(request.error);
         }
         else
         {

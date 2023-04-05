@@ -57,7 +57,7 @@ public class StartGame : MonoBehaviour
                 if (string.IsNullOrEmpty(userName))
                 {
                     FlashInputField(uname, 0.5f);
-                    Debug.Log(userName);
+                    //Debug.Log(userName);
                 }
                 else
                 {

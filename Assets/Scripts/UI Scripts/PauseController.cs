@@ -24,7 +24,7 @@ public class PauseController : MonoBehaviour
     {
         PauseIcon(!isPaused);
         Time.timeScale = Time.timeScale == 0 ? 1 : 0;
-        Debug.Log("Paused");
+        //Debug.Log("Paused");
         isPaused = Time.timeScale == 0;
     }
     private static void PauseIcon(bool value)

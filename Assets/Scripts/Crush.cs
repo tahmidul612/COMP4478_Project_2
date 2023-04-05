@@ -10,7 +10,12 @@ public class Crush : MonoBehaviour
     [SerializeField] private LayerMask ceilingLayer;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Transform ceilingDetector;
+    private AudioSource audioSource;
 
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -21,6 +26,7 @@ public class Crush : MonoBehaviour
         }
         if (groundTouched())
         {
+            audioSource.Play();
             speed = 2f;
         }
         rb.velocity = new Vector2(rb.velocity.x, speed);

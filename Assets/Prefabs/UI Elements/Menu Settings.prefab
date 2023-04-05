@@ -3526,7 +3526,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7956113987322125169, guid: b98c82e5439deab4a9099b18983e3f80, type: 3}
       propertyPath: m_text
-      value: Rest Name
+      value: Reset Name
       objectReference: {fileID: 0}
     - target: {fileID: 7956113987428674964, guid: b98c82e5439deab4a9099b18983e3f80, type: 3}
       propertyPath: m_Name

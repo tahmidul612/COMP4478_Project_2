@@ -28,7 +28,7 @@ public class High_score : MonoBehaviour
     void Start()
     {
         MainMenuButton.onClick.AddListener(delegate { MainMenu(); });
-        QuitButton.onClick.AddListener(delegate { Application.Quit(); });
+        QuitButton.onClick.AddListener(delegate { QuitGame.QuitGameButton(); });
         // Create a web request to retrieve the JSON data
         HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://advgamin.000webhostapp.com/ASSIGN2/highscores.php");
         request.ContentType = "application/json";

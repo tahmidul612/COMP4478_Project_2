@@ -26,6 +26,7 @@ public class PauseController : MonoBehaviour
         Time.timeScale = Time.timeScale == 0 ? 1 : 0;
         //Debug.Log("Paused");
         isPaused = Time.timeScale == 0;
+        AudioListener.pause = isPaused;
     }
     private static void PauseIcon(bool value)
     {

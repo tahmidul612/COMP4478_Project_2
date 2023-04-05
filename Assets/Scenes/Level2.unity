@@ -1564,6 +1564,10 @@ PrefabInstance:
       propertyPath: cameraObject
       value: 
       objectReference: {fileID: 130402922}
+    - target: {fileID: 7167122712774959342, guid: 1ea1bf3b1fb40354089e21631215ad09, type: 3}
+      propertyPath: isSlidey
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7782410999450844306, guid: 1ea1bf3b1fb40354089e21631215ad09, type: 3}
       propertyPath: m_RootOrder
       value: 3

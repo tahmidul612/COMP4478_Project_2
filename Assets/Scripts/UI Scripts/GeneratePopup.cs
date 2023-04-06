@@ -1,13 +1,13 @@
+// Tahmidul Islam @tahmidul612
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GeneratePopup : MonoBehaviour
 {
-    private Coroutine inProgress;
-    TMPro.TMP_Text text;
-    public string helpText;
-    public static GeneratePopup Instance;
+    private Coroutine inProgress; // The coroutine for the popup
+    TMPro.TMP_Text text; // The text component of the popup
+    public string helpText; // The text to be written to the popup
+    public static GeneratePopup Instance; // The singleton instance
     private void Awake()
     {
         // Set the singleton instance
@@ -18,7 +18,6 @@ public class GeneratePopup : MonoBehaviour
     }
     private void Start()
     {
-        // TODO: Find a better way to get the text component
         text = GameObject.Find("HUD Canvas/Help Popup").transform.GetChild(0).GetComponent<TMPro.TMP_Text>();
         inProgress = null;
     }
@@ -43,6 +42,9 @@ public class GeneratePopup : MonoBehaviour
         //Debug.Log("Popup delayed");
         inProgress = StartCoroutine(WriteText(helpText));
     }
+
+    // Set text to the popup, one character at a time
+    // Creates a type writer effect
     IEnumerator WriteText(string helpText)
     {
         foreach (char c in helpText)

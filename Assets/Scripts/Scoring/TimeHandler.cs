@@ -1,9 +1,10 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+// Tahmidul Islam @tahmidul612
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+// Start timer when the level is loaded
+// Contains static methods to get the current time,
+// and to start and stop the timer
 public class TimeHandler : MonoBehaviour
 {
     private TMPro.TMP_Text timerText;

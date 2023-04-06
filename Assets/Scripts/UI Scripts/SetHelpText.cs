@@ -1,22 +1,24 @@
-using System.Collections;
+// Tahmidul Islam @tahmidul612
 using UnityEngine;
 
+[RequireComponent(typeof(BoxCollider2D))]
 public class SetHelpText : MonoBehaviour
 {
+    // This script can be attached to any object to make it show a help text when the player collides with it
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.name == "Player")
         {
-            GeneratePopup.Instance.showHelpText(generateHelpText());
-            if (this.name != "NextLevel")
+            GeneratePopup.Instance.showHelpText(GenerateHelpText());
+            if (name != "NextLevel")
             {
-                this.GetComponent<BoxCollider2D>().enabled = false;
+                GetComponent<BoxCollider2D>().enabled = false;
             }
         }
     }
-    private string generateHelpText()
+    private string GenerateHelpText()
     {
-        return this.name switch
+        return name switch
         {
             "Slippery" => "Watch out for the slime on the floor! It's slippery",
             "Spike" => "Watch out for the spikes! They're sharp",

@@ -1,12 +1,12 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-
 public class CoinCollect : MonoBehaviour
 {
     public AudioClip coinClip;
     AudioSource audioSource;
-    private void Start() {
+    private void Start()
+    {
         audioSource = gameObject.GetComponent<AudioSource>();
     }
     private void OnCollisionEnter2D(Collision2D collision)

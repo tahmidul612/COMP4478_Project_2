@@ -1,7 +1,10 @@
+// Tahmidul Islam @tahmidul612
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
+// This script is attached to the volume slider in the options menu
+// It sets the volume of the game and saves it to PlayerPrefs
 public class SoundController : MonoBehaviour
 {
     private AudioMixer mainMixer;

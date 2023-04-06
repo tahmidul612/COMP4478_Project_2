@@ -1,5 +1,5 @@
+// Tahmidul Islam @tahmidul612
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -24,15 +24,11 @@ public class StartGame : MonoBehaviour
                 uname.gameObject.SetActive(false);
             }
         }
+
+        // Add listeners to the buttons
         highScoresButton.onClick.AddListener(delegate { HighScores(); });
         startButton.onClick.AddListener(delegate { StartGameButton(); });
         quitButton.onClick.AddListener(delegate { QuitGame.QuitGameButton(); });
-    }
-
-    public void SettingsMenu()
-    {
-        gameObject.SetActive(false);
-        transform.parent.Find("Settings").gameObject.SetActive(true);
     }
 
     public void HighScores()

@@ -1,8 +1,10 @@
+// Tahmidul Islam @tahmidul612
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+// A rewrite of the GeneratePopup script
+// This script is attached to the Game Over text
 public class GameOverDisplayScore : MonoBehaviour
 {
     private TMPro.TMP_Text TextBox;
@@ -26,6 +28,9 @@ public class GameOverDisplayScore : MonoBehaviour
         StartCoroutine(DelayPopup());
 
     }
+
+    // Switch between "Game OVer" and "You have scored {0} points!"
+    // infinite loop
     IEnumerator DelayPopup()
     {
         for (int i = 0; i <= 1; i = 1 - i)
@@ -33,8 +38,6 @@ public class GameOverDisplayScore : MonoBehaviour
             inProgress = StartCoroutine(WriteText(textSwitcher[i]));
             yield return new WaitUntil(() => inProgress == null);
         }
-        //Debug.Log("Delaying popup");
-        //Debug.Log("Popup delayed");
     }
     IEnumerator WriteText(string text)
     {

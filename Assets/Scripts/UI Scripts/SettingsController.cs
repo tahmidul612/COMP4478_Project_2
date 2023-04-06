@@ -1,9 +1,8 @@
+// Tahmidul Islam @tahmidul612
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -23,27 +22,33 @@ public class SettingsController : MonoBehaviour
         {
             resetNameButton = transform.Find("Reset Name").GetComponent<Button>();
             uname = transform.parent.Find("MainMenu/uname").GetComponent<InputField>();
-            resetNameButton.onClick.AddListener(delegate { resetName(); });
+            resetNameButton.onClick.AddListener(delegate { ResetName(); });
         }
     }
     void Start()
     {
         OnEnable();
     }
+
+    // Refresh the resolution dropdown when the settings menu is opened
     private void OnEnable()
     {
         SetupResolutions();
+
+        // Don't show the display dropdown if WebGL
         if (Application.platform == RuntimePlatform.WebGLPlayer)
         {
             displayDropdown.transform.parent.gameObject.SetActive(false);
         }
         else
         {
-            setupDisplays();
+            SetupDisplays();
         }
     }
 
-    private void setupDisplays()
+    // Populate the display selection dropdown with the
+    // available display indexes
+    private void SetupDisplays()
     {
         displays = new List<Display>();
         displays.AddRange(Display.displays);
@@ -58,6 +63,7 @@ public class SettingsController : MonoBehaviour
 
     public static void SetupResolutions()
     {
+        // Get the current and the maximum available resolution
         int currentRefreshRate = Screen.currentResolution.refreshRate;
         Resolution currentResolution = new()
         {
@@ -71,6 +77,8 @@ public class SettingsController : MonoBehaviour
             height = Display.main.systemHeight,
             refreshRate = currentRefreshRate
         };
+
+        // Create a list of resolutions to choose from
         resolutions = new List<Resolution>();
         if (Application.platform != RuntimePlatform.WebGLPlayer)
         {
@@ -85,14 +93,17 @@ public class SettingsController : MonoBehaviour
             maxResolution
             });
         }
+        // Only use the current resolution if WebGL
         else
         {
             resolutions.Add(currentResolution);
         }
+        // Remove duplicates and sort the list
         resolutions = resolutions.Distinct().ToList();
         resolutions = resolutions.OrderBy(res => res.width).ToList();
-        resolutions = resolutions.GetRange(0, resolutions.IndexOf(maxResolution) + 1);
+        resolutions = resolutions.GetRange(0, resolutions.IndexOf(maxResolution) + 1); // Remove resolutions that are higher than the maximum
 
+        // Set the dropdown options
         resolutionDropdown.ClearOptions();
         resolutionDropdown.AddOptions(resolutions.Select(res => res.ToString()).ToList());
         resolutionDropdown.value = resolutions.IndexOf(currentResolution);
@@ -103,6 +114,8 @@ public class SettingsController : MonoBehaviour
     private static void SetDisplay(int displayIndex)
     {
         // PlayerPrefs.SetInt("UnitySelectMonitor", displayIndex);
+        // TODO: Add display switching
+        // Unity documentation is not very clear on how to achieve this
     }
 
     // Set volume
@@ -112,11 +125,9 @@ public class SettingsController : MonoBehaviour
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
 
-
-    private void resetName()
+    // Reset the username
+    private void ResetName()
     {
-
-
         PlayerPrefs.DeleteKey("username");
         uname.gameObject.SetActive(true);
     }

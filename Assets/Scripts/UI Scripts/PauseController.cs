@@ -1,4 +1,4 @@
-using System.Linq;
+// Tahmidul Islam @tahmidul612
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -11,6 +11,8 @@ public class PauseController : MonoBehaviour
     {
         pauseButton = GetComponent<Button>();
         PauseIcon(isPaused);
+
+        // Only show the pause button on the level scenes
         if (SceneManager.GetActiveScene().name.Contains("Level"))
         {
             pauseButton.onClick.AddListener(delegate { TogglePlayState(); });
@@ -20,6 +22,8 @@ public class PauseController : MonoBehaviour
             pauseButton.gameObject.SetActive(false);
         }
     }
+
+    // Toggle the pause state using timeScale, and pause audio
     public static void TogglePlayState()
     {
         PauseIcon(!isPaused);
@@ -28,6 +32,8 @@ public class PauseController : MonoBehaviour
         isPaused = Time.timeScale == 0;
         AudioListener.pause = isPaused;
     }
+
+    // Change the button icon to show the current state
     private static void PauseIcon(bool value)
     {
         // larger

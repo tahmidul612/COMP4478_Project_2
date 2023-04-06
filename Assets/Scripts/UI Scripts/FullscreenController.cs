@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+// Tahmidul Islam @tahmidul612
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class FullscreenController : MonoBehaviour
@@ -19,11 +17,6 @@ public class FullscreenController : MonoBehaviour
         isFullScreen = !Screen.fullScreen;
         Screen.fullScreen = isFullScreen;
         FullScreenIcon(isFullScreen);
-        // GameObject settings = GameObject.Find("Settings");
-        // if (settings != null && settings.activeSelf)
-        // {
-        //     SettingsController.SetupResolutions();
-        // }
     }
     private void FullScreenIcon(bool value)
     {

@@ -1,10 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
+// Tahmidul Islam @tahmidul612
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))] // Only attach this script to an object with an AudioSource
 public class IgnoreAudioListener : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // This script can be attached to any object to make it ignore the pause 
+    // state of the AudioListener
     void Start()
     {
         AudioSource audioSource = GetComponent<AudioSource>();
